@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Pic/god/crash.png" type="Texture" id=2]
+[ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Font/New Super Mario Font U.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[node name="GameOver" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.09509
+margin_top = -5.41649
+margin_right = 3.09509
+margin_bottom = -5.4165
+script = ExtResource( 1 )
+
+[node name="crash" type="TextureRect" parent="."]
+margin_left = 196.135
+margin_top = 249.21
+margin_right = 324.135
+margin_bottom = 377.21
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 147.501
+margin_top = 142.772
+margin_right = 351.501
+margin_bottom = 198.772
+custom_fonts/font = SubResource( 2 )
+text = "Game Over"
+
+[node name="Button" type="Button" parent="."]
+margin_left = 209.262
+margin_top = 417.226
+margin_right = 320.262
+margin_bottom = 475.226
+custom_fonts/font = SubResource( 3 )
+text = "Restart"
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

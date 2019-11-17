@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/LevelDone.gd" type="Script" id=1]
+[ext_resource path="res://Pic/ui/LevelDone.png" type="Texture" id=2]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Font/New Super Mario Font U.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 33
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Font/New Super Mario Font U.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = SubResource( 3 )
+
+[node name="LevelDone" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.568787
+margin_right = 0.568787
+script = ExtResource( 1 )
+
+[node name="LevelDone" type="TextureRect" parent="."]
+margin_left = -0.948181
+margin_top = 256.758
+margin_right = 255.052
+margin_bottom = 512.758
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 88.1642
+margin_top = 52.8985
+margin_right = 435.164
+margin_bottom = 123.899
+custom_fonts/font = SubResource( 2 )
+text = "Your Final Velocity is"
+
+[node name="Velocity" type="Label" parent="."]
+margin_left = 240.603
+margin_top = 116.035
+margin_right = 280.603
+margin_bottom = 159.035
+custom_fonts/font = SubResource( 4 )
+text = "0"
