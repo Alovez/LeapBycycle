@@ -21,11 +21,11 @@ func _process(delta):
 	update_ui(delta)
 	if 430 - $God.position.y > distance:
 		save_level(1, $God.velocity)
-		get_tree().change_scene("res://Scene/LevelDone.tscn")
+		get_tree().change_scene("res://Scene/Menu/LevelDone.tscn")
 		
 
 func init_shit():
-	shit = preload("res://Scene/Shit.tscn")
+	shit = preload("res://Scene/Elements/Shit.tscn")
 	for i in range(int(distance / 200)):
 		var new_shit = shit.instance()
 		new_shit.x = rand_range(35, 250)
@@ -50,7 +50,7 @@ func _new_road(y, pic="res://Pic/Road/road.png"):
 	add_child(road)
 
 func init_tree():
-	tree = preload("res://Scene/Tree.tscn")
+	tree = preload("res://Scene/Elements/Tree.tscn")
 	for i in range(int(distance / 80)):
 		var new_tree = tree.instance()
 		new_tree.position.x = 30
@@ -77,7 +77,7 @@ func update_ui(dt):
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func _on_God_gameover():
-	get_tree().change_scene("res://Scene/GameOver.tscn")
+	get_tree().change_scene("res://Scene/Menu/GameOver.tscn")
 
 func save_level(level, final_velocity):
 	var level_file = File.new()

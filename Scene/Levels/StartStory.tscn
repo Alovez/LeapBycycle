@@ -1,0 +1,181 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Scripts/StartStory.gd" type="Script" id=1]
+[ext_resource path="res://Pic/ui/TimeS.png" type="Texture" id=2]
+[ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Pic/Maps/Blue-3d.png" type="Texture" id=4]
+[ext_resource path="res://Pic/ui/dr_np.png" type="Texture" id=5]
+[ext_resource path="res://Pic/ui/clock.png" type="Texture" id=6]
+[ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Pic/ui/Solarsystem.png" type="Texture" id=8]
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.475369, 1 )
+colors = PoolColorArray( 0, 0.296875, 1, 1, 0.62738, 0.132813, 1, 1, 0.0859375, 1, 0.528687, 1 )
+
+[sub_resource type="GradientTexture" id=4]
+gradient = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 44.5
+flag_disable_z = true
+spread = 177.57
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+angular_velocity = -6.99
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 15.0
+color_ramp = SubResource( 4 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 22
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Opening"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("clock:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-005, 1e-005 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextArea:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.4, 1.5, 2, 2.4, 2.5, 3, 3.4, 3.5, 4, 4.4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ "", "", "Dr. Nb found that the key to a time leap was the time loop.", "Dr. Nb found that the key to a time leap was the time loop.", "", "By touching the time singularity, you can enter the time loop, but you can't easily escape in the time loop.", "By touching the time singularity, you can enter the time loop, but you can't easily escape in the time loop.", "", "According to Dr. Nb's research, the time cycle actually has the same effect as the earth's rotation and revolution.", "According to Dr. Nb's research, the time cycle actually has the same effect as the earth's rotation and revolution.", "", "In the time loop, each cycle of the cycle itself constitutes a ring of time zones(ROTZ), while on the macroscopic scale , just like the revolution of the earth, many ROTZ around the time singularity also constitutes a closed loop.
+", "In the time loop, each cycle of the cycle itself constitutes a ring of time zones(ROTZ), while on the macroscopic scale , just like the revolution of the earth, many ROTZ around the time singularity also constitutes a closed loop.
+", "" ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "pause_animation"
+}, {
+"args": [  ],
+"method": "pause_animation"
+}, {
+"args": [  ],
+"method": "pause_animation"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TimeS:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 1.5, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 1e-005, 1e-005 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Solarsystem:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("TextArea:custom_fonts/font:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 3.4, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 30, 30, 22 ]
+}
+
+[node name="StartStory" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -0.625641
+margin_top = -0.426605
+margin_right = 511.374
+margin_bottom = 512.573
+color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
+
+[node name="TimeS" type="Sprite" parent="."]
+position = Vector2( 260.141, 164.988 )
+scale = Vector2( 1e-005, 1e-005 )
+texture = ExtResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="TimeS"]
+position = Vector2( -2.10083, -6.10352e-005 )
+scale = Vector2( 1, 1 )
+amount = 40
+lifetime = 2.0
+process_material = SubResource( 5 )
+
+[node name="Stars" parent="." instance=ExtResource( 3 )]
+position = Vector2( 319.107, 242.803 )
+
+[node name="Blue-3d" type="Sprite" parent="."]
+position = Vector2( 663.112, 132.671 )
+scale = Vector2( 0.78436, 0.731433 )
+texture = ExtResource( 4 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 256, 256 )
+
+[node name="dr_np" type="Sprite" parent="."]
+position = Vector2( -158.531, 121.067 )
+scale = Vector2( 0.357648, 0.357648 )
+texture = ExtResource( 5 )
+
+[node name="clock" type="Sprite" parent="."]
+position = Vector2( 262.011, 172.369 )
+scale = Vector2( 1e-005, 1e-005 )
+texture = ExtResource( 6 )
+
+[node name="TextArea" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 348.0
+margin_right = 505.0
+margin_bottom = 496.0
+custom_fonts/font = SubResource( 1 )
+text = "In the time loop, each cycle of the cycle itself constitutes a ring of time zones(ROTZ), while on the macroscopic scale , just like the revolution of the earth, many ROTZ around the time singularity also constitutes a closed loop.
+"
+autowrap = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Opening = SubResource( 2 )
+
+[node name="Solarsystem" type="Sprite" parent="."]
+position = Vector2( 254.122, 149.455 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 8 )
