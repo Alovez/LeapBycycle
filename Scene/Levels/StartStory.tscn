@@ -1,33 +1,19 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/StartStory.gd" type="Script" id=1]
-[ext_resource path="res://Pic/ui/TimeS.png" type="Texture" id=2]
-[ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Pic/ui/Blue-3d.png" type="Texture" id=4]
-[ext_resource path="res://Pic/ui/dr_np.png" type="Texture" id=5]
-[ext_resource path="res://Pic/ui/clock.png" type="Texture" id=6]
-[ext_resource path="res://Pic/ui/Solarsystem.png" type="Texture" id=7]
+[ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Pic/ui/Blue-3d.png" type="Texture" id=3]
+[ext_resource path="res://Pic/ui/dr_np.png" type="Texture" id=4]
+[ext_resource path="res://Pic/ui/clock.png" type="Texture" id=5]
+[ext_resource path="res://Pic/ui/Solarsystem.png" type="Texture" id=6]
+[ext_resource path="res://Pic/ui/Gray.png" type="Texture" id=7]
 [ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Pic/ui/TimeS.png" type="Texture" id=9]
+[ext_resource path="res://Pic/ui/leapyear.png" type="Texture" id=10]
 
-[sub_resource type="Gradient" id=1]
-offsets = PoolRealArray( 0, 0.475369, 1 )
-colors = PoolColorArray( 0, 0.296875, 1, 1, 0.62738, 0.132813, 1, 1, 0.0859375, 1, 0.528687, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="ParticlesMaterial" id=3]
-emission_shape = 1
-emission_sphere_radius = 44.5
-flag_disable_z = true
-spread = 177.57
-gravity = Vector3( 0, 0, 0 )
-initial_velocity = 100.0
-angular_velocity = -6.99
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-scale = 15.0
-color_ramp = SubResource( 2 )
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 8 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 30
@@ -35,6 +21,7 @@ font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=5]
 length = 21.0
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("clock:scale")
 tracks/0/interp = 1
@@ -45,7 +32,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-05, 1e-05 ) ]
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-005, 1e-005 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("TextArea:text")
@@ -54,12 +41,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.4, 1.5, 2, 2.4, 2.5, 3, 3.4, 3.5, 4, 4.4, 4.5, 5, 5.4, 5.5, 6, 6.4, 6.5, 7, 7.4, 7.5, 8, 8.4, 8.5, 9, 9.4, 9.5, 10, 10.4, 10.5, 11, 11.4, 11.5, 12, 12.4, 12.5, 13, 13.4, 13.5, 14, 14.4, 14.5, 15, 15.4, 15.5, 16, 16.4, 16.5, 17, 17.4, 17.5, 18, 18.4, 18.5, 19, 19.4, 19.5, 20, 20.4, 20.5, 21 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.5, 1, 1.4, 1.5, 2, 2.4, 2.5, 3, 3.4, 3.5, 4, 4.4, 4.5, 5.5, 5.9, 6, 6.5, 6.9, 7, 7.5, 7.9, 8, 8.5, 8.9, 9, 9.5, 9.9, 10, 10.5, 10.9, 11, 11.5, 11.9, 12, 12.5, 12.9, 13, 13.5, 13.9, 14, 14.5, 14.9, 15, 15.5, 15.9, 16, 16.5, 16.9, 17, 17.5, 17.9, 18, 18.5, 18.9, 19, 19.5, 19.9, 20, 20.5, 20.9, 21, 21.5, 21.9, 22, 22.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ "", "", "Dr. Nb found that the key to a time leap was the time loop.", "Dr. Nb found that the key to a time leap was the time loop.", "", "By touching the time singularity, you can enter the time loop, but you can't easily escape in the time loop.", "By touching the time singularity, you can enter the time loop, but you can't easily escape in the time loop.", "", "According to Dr. Nb's research, the time cycle actually has the same effect as the earth's rotation and revolution.", "According to Dr. Nb's research, the time cycle actually has the same effect as the earth's rotation and revolution.", "", "In the time loop, each cycle of the cycle itself constitutes a ring of time zones(ROTZ), while on the macroscopic scale , just like the revolution of the earth, many ROTZ around the time singularity also constitutes a closed loop.
-", "In the time loop, each cycle of the cycle itself constitutes a ring of time zones(ROTZ), while on the macroscopic scale , just like the revolution of the earth, many ROTZ around the time singularity also constitutes a closed loop.
-", "", "Following the law of time cycle, walking in the time loop again and again can never break the cycle.", "Following the law of time cycle, walking in the time loop again and again can never break the cycle.", "", "However, as the cycle of the rotation and revolution of the Earth is not exactly the same, it has formed a leap year, and the time cycle has such a problem.", "However, as the cycle of the rotation and revolution of the Earth is not exactly the same, it has formed a leap year, and the time cycle has such a problem.", "", "In the original time cycle, the six ROTZ just formed a complete time cycle. 
+"values": [ "", "", "Dr. Nb found that the key to a time leap was the time loop.", "Dr. Nb found that the key to a time leap was the time loop.", "", "By touching the time singularity, you can enter the time loop, but you can't easily escape in the time loop.", "By touching the time singularity, you can enter the time loop, but you can't easily escape in the time loop.", "", "According to Dr. Nb's research, the time cycle actually has the same effect as the earth's rotation and revolution.", "According to Dr. Nb's research, the time cycle actually has the same effect as the earth's rotation and revolution.", "", "In the time loop, each cycle of the cycle itself constitutes a ring of time zones(ROTZ).", "In the time loop, each cycle of the cycle itself constitutes a ring of time zones(ROTZ).", "", "while on the macroscopic scale , just like the revolution of the earth, many ROTZ around the time singularity also constitutes a closed loop.", "while on the macroscopic scale , just like the revolution of the earth, many ROTZ around the time singularity also constitutes a closed loop.", "", "Following the law of time cycle, walking in the time loop again and again can never break the cycle.", "Following the law of time cycle, walking in the time loop again and again can never break the cycle.", "", "However, as the cycle of the rotation and revolution of the Earth is not exactly the same, it has formed a leap year, and the time cycle has such a problem.", "However, as the cycle of the rotation and revolution of the Earth is not exactly the same, it has formed a leap year, and the time cycle has such a problem.", "", "In the original time cycle, the six ROTZ just formed a complete time cycle. 
 ", "In the original time cycle, the six ROTZ just formed a complete time cycle. 
 ", "", "However, if a ROTZ is punched out at a faster rate than the cycle of a single ROTZ, a time crack can be obtained between the two time zones.", "However, if a ROTZ is punched out at a faster rate than the cycle of a single ROTZ, a time crack can be obtained between the two time zones.", "", "In the time crack, you are frozen between the two time zones until they are closed. ", "In the time crack, you are frozen between the two time zones until they are closed. ", "", "Time also does not pass until they close, which means that the time gap between the two ROTZ is outside of time.", "Time also does not pass until they close, which means that the time gap between the two ROTZ is outside of time.", "", "There is no time flow outside of time, so the speed will stay here.", "There is no time flow outside of time, so the speed will stay here.", "", "When a complete time loop is over, all previously accumulated speeds can be accumulated without a time scale. ", "When a complete time loop is over, all previously accumulated speeds can be accumulated without a time scale. ", "", "The accumulated speed will be released once when the next time loop begins.", "The accumulated speed will be released once when the next time loop begins.", "", "According to the theory of Dr. Nb, when the accumulated speed exceeds the time escape speed, it can break through the time loop back to the normal time line.", "According to the theory of Dr. Nb, when the accumulated speed exceeds the time escape speed, it can break through the time loop back to the normal time line.", "", "At the same time, the difference between the accumulated speed and the time escape speed will change to the backtracking on the normal timeline. In other words, it is to go back to the past and achieve a leap in time.", "At the same time, the difference between the accumulated speed and the time escape speed will change to the backtracking on the normal timeline. In other words, it is to go back to the past and achieve a leap in time.", "", "Leap Bycycle is a device invented by Dr. Nb for breaking the ROTZ. ", "Leap Bycycle is a device invented by Dr. Nb for breaking the ROTZ. ", "", "It is difficult to exceed the travel speed of the ROTZ by human running speed, and other power devices have no way to use it in the time cycle. ", "It is difficult to exceed the travel speed of the ROTZ by human running speed, and other power devices have no way to use it in the time cycle. ", "", "Only bicycles that powered only by legs and can provide enough speed in the ROTZ.", "Only bicycles that powered only by legs and can provide enough speed in the ROTZ.", "", "In the Leap Bycycle device, the annular time zone is represented as a road. ", "In the Leap Bycycle device, the annular time zone is represented as a road. ", "", "However, time has the ability to repair itself, and there are many obstacles（like other bikes） on the road to prevent the time leap.", "However, time has the ability to repair itself, and there are many obstacles（like other bikes） on the road to prevent the time leap.", "", "Be careful." ]
 }
@@ -70,7 +55,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ),
+"times": PoolRealArray( 1, 2, 3, 4, 5.5, 6.5, 7.5, 8.5, 9.5, 10.5, 11.5, 12.5, 13.5, 14.5, 15.5, 16.5, 17.5, 18.5, 19.5, 20.5, 21.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
@@ -144,10 +129,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1, 1.5, 2, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 1, 1.5, 2, 2.5, 4.5, 4.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 1e-05, 1e-05 ) ]
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Solarsystem:scale")
@@ -156,10 +141,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 2, 2.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 2, 2.5, 3, 3.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.3, 0.3 ) ]
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-005, 1e-005 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("TextArea:custom_fonts/font:size")
@@ -168,40 +153,145 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 3.4, 3.5, 4.5, 5.5, 6.5, 7.5, 8.5, 12.5, 13.5, 14.5, 15.5 ),
+"times": PoolRealArray( 0, 4.4, 4.5, 6, 7, 8, 9, 10, 14, 15, 16, 17 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 30, 30, 22, 30, 25, 30, 28, 30, 30, 28, 22, 30 ]
+"values": [ 30, 30, 28, 30, 25, 30, 28, 30, 30, 28, 22, 30 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Gray:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 3, 3.5, 4.5, 4.9, 5.7, 7.5, 7.9, 8.5, 9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.1 ), Vector2( 0.2, 0.1 ), Vector2( 0.2, 0.1 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 1e-005, 1e-005 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Gray/Label:rect_size")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 4.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 80, 33 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Gray/Label:percent_visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 4.5, 5, 7.5, 7.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0, 0.0, 1.0 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Gray:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 4.5, 4.9, 4.95, 5, 5.05, 5.1, 5.15, 5.2, 5.25, 5.3, 5.35, 5.4, 5.45, 5.5, 5.55, 5.6, 5.65, 5.7, 5.75, 5.8, 5.85, 5.9, 5.95, 6, 6.05, 6.1, 6.15, 6.2, 6.25, 6.3, 6.35, 6.4, 6.45, 7.5, 7.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 260.59, 165.569 ), Vector2( 260.59, 235.403 ), Vector2( 336.359, 211.31 ), Vector2( 359.055, 173.251 ), Vector2( 325.186, 145.318 ), Vector2( 262.859, 123.669 ), Vector2( 187.962, 146.016 ), Vector2( 193.898, 203.978 ), Vector2( 262.685, 232.61 ), Vector2( 260.59, 235.403 ), Vector2( 336.359, 211.31 ), Vector2( 359.055, 173.251 ), Vector2( 325.186, 145.318 ), Vector2( 262.859, 123.669 ), Vector2( 187.962, 146.016 ), Vector2( 193.898, 203.978 ), Vector2( 262.685, 232.61 ), Vector2( 260.59, 235.403 ), Vector2( 336.359, 211.31 ), Vector2( 359.055, 173.251 ), Vector2( 325.186, 145.318 ), Vector2( 262.859, 123.669 ), Vector2( 187.962, 146.016 ), Vector2( 193.898, 203.978 ), Vector2( 262.685, 232.61 ), Vector2( 260.59, 235.403 ), Vector2( 336.359, 211.31 ), Vector2( 359.055, 173.251 ), Vector2( 325.186, 145.318 ), Vector2( 262.859, 123.669 ), Vector2( 187.962, 146.016 ), Vector2( 193.898, 203.978 ), Vector2( 262.685, 232.61 ), Vector2( 262.685, 232.61 ), Vector2( 261.288, 158.586 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Gray:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 6.65, 6.75, 7.5, 7.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false, false, true ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("TimeS:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( -0.05, 0, 6.65, 6.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, true, false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("leapyear:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 6.55, 7, 7.5, 7.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Blue-3d:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 9, 9.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 625.402, 145.939 ), Vector2( 625.402, 145.939 ), Vector2( 269.249, 162.7 ) ]
+}
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.475369, 1 )
+colors = PoolColorArray( 0, 0.296875, 1, 1, 0.62738, 0.132813, 1, 1, 0.0859375, 1, 0.528687, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 44.5
+flag_disable_z = true
+spread = 177.57
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 100.0
+angular_velocity = -6.99
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 15.0
+color_ramp = SubResource( 2 )
 
 [node name="StartStory" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -0.625641
-margin_top = -0.426605
-margin_right = 511.374
-margin_bottom = 512.573
+margin_left = 1.27014
+margin_top = -1.02534
+margin_right = 513.27
+margin_bottom = 511.974
 color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
 
-[node name="TimeS" type="Sprite" parent="."]
-position = Vector2( 260.141, 164.988 )
-scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 2 )
-
-[node name="Particles2D" type="Particles2D" parent="TimeS"]
-position = Vector2( -2.10083, -6.10352e-05 )
-amount = 40
-lifetime = 2.0
-process_material = SubResource( 3 )
-
-[node name="Stars" parent="." instance=ExtResource( 3 )]
+[node name="Stars" parent="." instance=ExtResource( 2 )]
 position = Vector2( 319.107, 242.803 )
 
 [node name="Blue-3d" type="Sprite" parent="."]
-position = Vector2( 663.112, 132.671 )
+position = Vector2( 625.402, 145.939 )
 scale = Vector2( 0.78436, 0.731433 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 256, 256 )
@@ -209,17 +299,34 @@ position = Vector2( 256, 256 )
 [node name="dr_np" type="Sprite" parent="."]
 position = Vector2( -158.531, 121.067 )
 scale = Vector2( 0.357648, 0.357648 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="clock" type="Sprite" parent="."]
 position = Vector2( 262.011, 172.369 )
-scale = Vector2( 1e-05, 1e-05 )
-texture = ExtResource( 6 )
+scale = Vector2( 1e-005, 1e-005 )
+texture = ExtResource( 5 )
 
 [node name="Solarsystem" type="Sprite" parent="."]
 position = Vector2( 254.122, 149.455 )
-scale = Vector2( 0.3, 0.3 )
+scale = Vector2( 1e-005, 1e-005 )
+texture = ExtResource( 6 )
+
+[node name="Gray" type="Sprite" parent="."]
+position = Vector2( 260.59, 191.757 )
+scale = Vector2( 1e-005, 1e-005 )
 texture = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Label" type="Label" parent="Gray"]
+margin_left = -37.1217
+margin_top = -11.9748
+margin_right = 42.8783
+margin_bottom = 21.0252
+custom_fonts/font = SubResource( 6 )
+text = "ROTZ"
+percent_visible = 0.7
 
 [node name="TextArea" type="Label" parent="."]
 margin_left = 24.9786
@@ -227,8 +334,23 @@ margin_top = 337.12
 margin_right = 499.979
 margin_bottom = 514.12
 custom_fonts/font = SubResource( 4 )
-text = "Be careful."
 autowrap = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Opening = SubResource( 5 )
+
+[node name="TimeS" type="Sprite" parent="."]
+position = Vector2( 260.141, 164.988 )
+scale = Vector2( 1e-005, 1e-005 )
+texture = ExtResource( 9 )
+
+[node name="Particles2D" type="Particles2D" parent="TimeS"]
+position = Vector2( -2.10083, -6.10352e-005 )
+amount = 40
+lifetime = 2.0
+process_material = SubResource( 3 )
+
+[node name="leapyear" type="Sprite" parent="."]
+position = Vector2( 252.646, 151.022 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 10 )
