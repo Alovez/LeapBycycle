@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/20191117_140342137_iOS.png-2476782ee0e90de9ada75a884c9b5dc5.stex"
+path="res://.import/Blue-3d.png-676f62c7fe0f6b0264e39127e52a1db3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Pic/Maps/20191117_140342137_iOS.png"
-dest_files=[ "res://.import/20191117_140342137_iOS.png-2476782ee0e90de9ada75a884c9b5dc5.stex" ]
+source_file="res://Pic/ui/Blue-3d.png"
+dest_files=[ "res://.import/Blue-3d.png-676f62c7fe0f6b0264e39127e52a1db3.stex" ]
 
 [params]
 
