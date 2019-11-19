@@ -70,7 +70,7 @@ func update_animation():
 		
 			
 func update_distance(dt, v):
-	distance += v * dt
+	distance += v * kv * dt
 
 func update_drag(v):
 	drag = v * v * kd

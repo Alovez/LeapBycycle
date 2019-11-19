@@ -1,7 +1,7 @@
 extends Control
 
 var distance = 0
-var target_distance
+var target_distance = 10000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

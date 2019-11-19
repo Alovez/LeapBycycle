@@ -72,7 +72,7 @@ func update_shit():
 
 func update_ui(dt):
 	$Camera2D.position.y = $God.position.y
-	$Camera2D/UILayer/CommonUI/map.distance = 430 - $God.position.y
+	$Camera2D/UILayer/CommonUI/map.distance = $God.distance
 	$Camera2D/UILayer/CommonUI/Speedometer.velocity = $God.velocity
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
