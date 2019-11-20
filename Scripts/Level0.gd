@@ -18,6 +18,9 @@ func _process(delta):
 	if not bypass_tutorial:
 		update_tutorial(delta)
 	update_ui()
+	if 430 - $God.position.y > distance:
+		save_level(0, $God.velocity)
+		get_tree().change_scene("res://Scene/Menu/LevelDone.tscn")
 
 func init_road():
 	for i in range(int(distance / 256)):
@@ -40,21 +43,27 @@ func init_ui():
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func update_tutorial(dt):
-	print($God.distance)
-	
 	if $God.distance <= 0 and tutorial_step < 1:
-		_show_toturial("Press    To Ride")
+		_show_toturial("Press      To Ride")
+		$Camera2D/UILayer/keyhit/Up.visible = true
 		if Input.is_action_pressed("ui_up"):
+			$Camera2D/UILayer/keyhit/Up.visible = false
 			_next_tutorial()
 	
 	if $God.distance > 500 and tutorial_step < 2:
-		_show_toturial("Press    To Break")
+		_show_toturial("Press      To Break")
+		$Camera2D/UILayer/keyhit/Down.visible = true
 		if Input.is_action_pressed("ui_down"):
+			$Camera2D/UILayer/keyhit/Down.visible = false
 			_next_tutorial()
 	
 	if $God.distance > 650 and tutorial_step < 3:
-		_show_toturial("Press    To Keep You Moving")
+		_show_toturial("Press      To Keep You Moving")
+		$Camera2D/UILayer/keyhit/Up.position.x = 520
+		$Camera2D/UILayer/keyhit/Up.position.y = 1106
+		$Camera2D/UILayer/keyhit/Up.visible = true
 		if Input.is_action_pressed("ui_up"):
+			$Camera2D/UILayer/keyhit/Up.visible = false
 			_next_tutorial()
 			
 	if $God.distance > 1000 and tutorial_step < 4:
@@ -63,18 +72,24 @@ func update_tutorial(dt):
 			_next_tutorial()
 	
 	if $God.distance > 1500 and tutorial_step < 5:
-		_show_toturial("Press    TO Left-leaning")
+		_show_toturial("Press      TO Left-leaning")
+		$Camera2D/UILayer/keyhit/Left.visible = true
 		if Input.is_action_pressed("ui_left"):
+			$Camera2D/UILayer/keyhit/Left.visible = false
 			_next_tutorial()
 	
 	if $God.distance > 2000 and tutorial_step < 6:
-		_show_toturial("Press    TO Right-leaning")
+		_show_toturial("Press      TO Right-leaning")
+		$Camera2D/UILayer/keyhit/Right.visible = true
 		if Input.is_action_pressed("ui_right"):
+			$Camera2D/UILayer/keyhit/Right.visible = false
 			_next_tutorial()
 			
 	if $God.distance > 2500 and tutorial_step < 7:
-		_show_toturial("Press    TO Boost")
+		_show_toturial("Press      TO Boost")
+		$Camera2D/UILayer/keyhit/Z.visible = true
 		if Input.is_action_pressed("boost"):
+			$Camera2D/UILayer/keyhit/Z.visible = false
 			_next_tutorial()
 	
 	if $God.distance > 3500 and tutorial_step < 8:
@@ -86,6 +101,7 @@ func update_tutorial(dt):
 			new_shit.scale = Vector2(0.25, 0.25)
 			new_shit.velocity = 1
 			new_shit.pause_mode = Node.PAUSE_MODE_STOP
+			new_shit.name = 'TestShit'
 			add_child(new_shit)
 			virtual_shit = true
 		if Input.is_action_pressed("ui_right") or Input.is_action_pressed("ui_left"):
@@ -113,3 +129,13 @@ func read_settings():
 	var settings = parse_json(settings_file.get_line())
 	if typeof(settings) == TYPE_OBJECT:
 		bypass_tutorial = settings.get("bypass_tutorial")
+		
+func save_level(level, final_velocity):
+	var level_file = File.new()
+	level_file.open("user://level_info.save", File.WRITE)
+	var level_info = {
+		"level": level,
+		"final_velocity": final_velocity
+	}
+	level_file.store_line(to_json(level_info))
+	level_file.close()

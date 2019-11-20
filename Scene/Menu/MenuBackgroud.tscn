@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.280788, 0.608374, 1 )
+colors = PoolColorArray( 0.953125, 0.917639, 0.0446777, 1, 0.582031, 0, 1, 1, 0.0717545, 0.893375, 0.966797, 1, 0, 1, 0.203125, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 1
+emission_sphere_radius = 256.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 15.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 2.0
+scale = 8.0
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+
+[node name="MenuBackgroud" type="ColorRect"]
+margin_left = -0.663391
+margin_right = 515.337
+margin_bottom = 517.0
+color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
+
+[node name="Stars" parent="." instance=ExtResource( 1 )]
+position = Vector2( 312.248, 208.991 )
+process_material = SubResource( 3 )

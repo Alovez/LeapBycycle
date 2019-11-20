@@ -91,6 +91,7 @@ func update_energy(f):
 
 
 func _on_Area2D_body_entered(body):
+	print(body.get_node('../'))
 	if velocity < 1.5:
 		$AnimatedSprite.play('crash')
 		velocity = 0

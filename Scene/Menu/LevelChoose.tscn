@@ -1,0 +1,196 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Scripts/LevelChoose.gd" type="Script" id=1]
+[ext_resource path="res://Scene/Menu/MenuBackgroud.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scene/Effects/TimeLoop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Pic/ui/Z.png" type="Texture" id=4]
+[ext_resource path="res://Pic/ui/six.png" type="Texture" id=5]
+[ext_resource path="res://Pic/ui/Blue.png" type="Texture" id=6]
+[ext_resource path="res://Pic/ui/LightBlue.png" type="Texture" id=7]
+[ext_resource path="res://Pic/ui/Green.png" type="Texture" id=8]
+[ext_resource path="res://Pic/ui/Pink.png" type="Texture" id=9]
+[ext_resource path="res://Pic/ui/Yellow.png" type="Texture" id=10]
+[ext_resource path="res://Pic/ui/Purple.png" type="Texture" id=11]
+[ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Pic/ui/Left.png" type="Texture" id=13]
+[ext_resource path="res://Pic/ui/Right.png" type="Texture" id=14]
+
+[sub_resource type="Animation" id=3]
+resource_name = "z_blink"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.603922 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "RollLevels"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Levels:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 30.0, 90.0, 150.0, 210.0, 270.0, 330.0, 390.0 ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [ "0" ],
+"method": "waiting_input"
+}, {
+"args": [ "1" ],
+"method": "waiting_input"
+}, {
+"args": [ "2" ],
+"method": "waiting_input"
+}, {
+"args": [ "3" ],
+"method": "waiting_input"
+}, {
+"args": [ "4" ],
+"method": "waiting_input"
+}, {
+"args": [ "5" ],
+"method": "waiting_input"
+}, {
+"args": [ "0" ],
+"method": "waiting_input"
+} ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Z:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1, 1.2, 2, 2.2, 3, 3.2, 4, 4.2, 5, 5.2, 6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false, true, false, true, false, true ]
+}
+
+[sub_resource type="DynamicFont" id=2]
+size = 40
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 23
+font_data = ExtResource( 12 )
+
+[node name="LevelChoose" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="MenuBackgroud" parent="." instance=ExtResource( 2 )]
+margin_left = 1.44183
+margin_top = -1.05264
+margin_right = 517.442
+margin_bottom = 515.947
+
+[node name="TimeLoop" parent="." instance=ExtResource( 3 )]
+position = Vector2( 256, 120 )
+
+[node name="Z" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.626852 )
+position = Vector2( 258.201, 357.615 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 4 )
+
+[node name="Z_blink" type="AnimationPlayer" parent="Z"]
+anims/z_blink = SubResource( 3 )
+
+[node name="Levels" type="Position2D" parent="."]
+position = Vector2( 256, 120 )
+rotation = 1.5708
+scale = Vector2( 0.5, 0.5 )
+
+[node name="six" type="Sprite" parent="Levels"]
+visible = false
+scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+
+[node name="Blue" type="Sprite" parent="Levels"]
+position = Vector2( -236.438, -408.221 )
+rotation = 2.61799
+texture = ExtResource( 6 )
+
+[node name="LightBlue" type="Sprite" parent="Levels"]
+position = Vector2( 470.393, 2.3324 )
+rotation = -1.5708
+texture = ExtResource( 7 )
+
+[node name="Green" type="Sprite" parent="Levels"]
+position = Vector2( 233.486, -405.771 )
+rotation = -2.61799
+texture = ExtResource( 8 )
+
+[node name="Pink" type="Sprite" parent="Levels"]
+position = Vector2( -468.292, 0.648376 )
+rotation = 1.5708
+texture = ExtResource( 9 )
+
+[node name="Yellow" type="Sprite" parent="Levels"]
+position = Vector2( 239.648, 406.278 )
+rotation = -0.523599
+texture = ExtResource( 10 )
+
+[node name="Purple" type="Sprite" parent="Levels"]
+position = Vector2( -233.29, 409.318 )
+rotation = 0.523599
+texture = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RollLevels = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 160.352
+margin_top = 436.432
+margin_right = 362.352
+margin_bottom = 495.432
+custom_fonts/font = SubResource( 2 )
+text = "Level 0"
+align = 1
+valign = 1
+
+[node name="HighScore" type="Label" parent="."]
+margin_left = 183.111
+margin_top = 220.964
+margin_right = 343.111
+margin_bottom = 275.964
+custom_fonts/font = SubResource( 4 )
+text = "Finial Velocity
+0"
+align = 1
+valign = 1
+
+[node name="Left" type="Sprite" parent="."]
+position = Vector2( 158.475, 465.212 )
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 13 )
+
+[node name="Right" type="Sprite" parent="Left"]
+position = Vector2( 663.16, 0 )
+texture = ExtResource( 14 )
