@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scene/Effects/EndStars.tscn" type="PackedScene" id=1]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.280788, 0.608374, 1 )
+colors = PoolColorArray( 0.953125, 0.917639, 0.0446777, 1, 0.582031, 0, 1, 1, 0.0717545, 0.893375, 0.966797, 1, 0, 1, 0.203125, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+emission_shape = 2
+emission_box_extents = Vector3( 200, 50, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 15.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 2.0
+scale = 8.0
+scale_random = 1.0
+color_ramp = SubResource( 2 )
+
+[node name="RoadEnd" type="ColorRect"]
+margin_left = -0.950043
+margin_top = -123.5
+margin_right = 321.05
+margin_bottom = 404.5
+color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
+
+[node name="Stars" parent="." instance=ExtResource( 1 )]
+position = Vector2( 153.4, 170.9 )
+rotation = -3.14159
+amount = 100
+lifetime = 18.0
+process_material = SubResource( 3 )

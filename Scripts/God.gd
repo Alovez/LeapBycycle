@@ -3,7 +3,7 @@ extends Node2D
 var kd = 2.0
 var mess = 10
 var energy_recovery = 0.1
-var kv = 400
+var kv = 300
 
 var velocity = 0
 var state = 0
@@ -24,7 +24,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func _process(delta):
+func _physics_process(delta):
 	if crashed > 0:
 		crashed -= 1
 	else:
@@ -91,10 +91,10 @@ func update_energy(f):
 
 
 func _on_Area2D_body_entered(body):
-	print(body.get_node('../'))
-	if velocity < 1.5:
-		$AnimatedSprite.play('crash')
-		velocity = 0
-		crashed = 30
-	else:
-		emit_signal("gameover")
+	if body != $RigidBody2D:
+		if velocity < 1.5:
+			$AnimatedSprite.play('crash')
+			velocity = 0
+			crashed = 30
+		else:
+			emit_signal("gameover")

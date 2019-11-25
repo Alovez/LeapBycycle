@@ -23,6 +23,8 @@ func _process(delta):
 			get_tree().change_scene("res://Scene/Levels/Level0.tscn")
 		elif current_level == '1':
 			get_tree().change_scene("res://Scene/Levels/Level1.tscn")
+		elif current_level == '2':
+			get_tree().change_scene("res://Scene/Levels/Level2.tscn")
 
 func waiting_input(level_num):
 	$AnimationPlayer.stop(false)

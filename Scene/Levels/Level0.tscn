@@ -1,20 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Level0.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Elements/God.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scene/UI/CommonUI.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Pic/ui/Up.png" type="Texture" id=4]
-[ext_resource path="res://Pic/ui/Down.png" type="Texture" id=5]
-[ext_resource path="res://Pic/ui/Left.png" type="Texture" id=6]
-[ext_resource path="res://Pic/ui/Z.png" type="Texture" id=7]
-[ext_resource path="res://Pic/ui/Right.png" type="Texture" id=8]
-
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://Font/New Super Mario Font U.ttf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 23
-font_data = SubResource( 1 )
+[ext_resource path="res://Scene/Elements/LevelCamera.tscn" type="PackedScene" id=3]
 
 [node name="Level0" type="Node2D"]
 pause_mode = 2
@@ -26,60 +14,4 @@ position = Vector2( 150, 430 )
 scale = Vector2( 0.25, 0.25 )
 z_index = 100
 
-[node name="Camera2D" type="Camera2D" parent="."]
-pause_mode = 1
-position = Vector2( 256, 256 )
-current = true
-
-[node name="UILayer" type="CanvasLayer" parent="Camera2D"]
-
-[node name="CommonUI" parent="Camera2D/UILayer" instance=ExtResource( 3 )]
-margin_top = -0.418457
-margin_bottom = -0.418457
-
-[node name="Tips" type="Control" parent="Camera2D/UILayer"]
-margin_right = 40.0
-margin_bottom = 40.0
-
-[node name="TipText" type="Label" parent="Camera2D/UILayer/Tips"]
-margin_left = 62.0
-margin_top = 314.0
-margin_right = 278.0
-margin_bottom = 373.0
-custom_fonts/font = SubResource( 2 )
-text = "Press      TO Boost"
-align = 1
-valign = 1
-autowrap = true
-
-[node name="keyhit" type="Control" parent="Camera2D/UILayer"]
-margin_left = -0.487701
-margin_top = -0.487671
-margin_right = 1073.51
-margin_bottom = 1711.51
-rect_scale = Vector2( 0.3, 0.3 )
-
-[node name="Up" type="Sprite" parent="Camera2D/UILayer/keyhit"]
-visible = false
-position = Vector2( 534.631, 1145.01 )
-texture = ExtResource( 4 )
-
-[node name="Down" type="Sprite" parent="Camera2D/UILayer/keyhit"]
-visible = false
-position = Vector2( 504.38, 1150 )
-texture = ExtResource( 5 )
-
-[node name="Left" type="Sprite" parent="Camera2D/UILayer/keyhit"]
-visible = false
-position = Vector2( 623.048, 1106.11 )
-texture = ExtResource( 6 )
-
-[node name="Z" type="Sprite" parent="Camera2D/UILayer/keyhit"]
-visible = false
-position = Vector2( 493, 1150 )
-texture = ExtResource( 7 )
-
-[node name="Right" type="Sprite" parent="Camera2D/UILayer/keyhit"]
-visible = false
-position = Vector2( 616.546, 1101.23 )
-texture = ExtResource( 8 )
+[node name="Camera2D" parent="." instance=ExtResource( 3 )]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/StartStory.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scene/Effects/TimeLoop.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Pic/ui/leapyear.png" type="Texture" id=10]
 [ext_resource path="res://Pic/ui/Z.png" type="Texture" id=11]
+[ext_resource path="res://Pic/ui/Right.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -314,14 +315,27 @@ tracks/2/keys = {
 "values": [ "Skip", " kip", "  ip" ]
 }
 
+[sub_resource type="Animation" id=6]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 449.417, 22.4366 ) ]
+}
+
 [node name="StartStory" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_left = 3.09408
-margin_top = 0.507108
-margin_right = 515.094
-margin_bottom = 513.506
+margin_right = 512.0
+margin_bottom = 512.999
 color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
 
 [node name="Stars" parent="." instance=ExtResource( 2 )]
@@ -410,3 +424,9 @@ texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Z"]
 anims/skip = SubResource( 5 )
+anims/stop = SubResource( 6 )
+
+[node name="Right" type="Sprite" parent="."]
+position = Vector2( 496.177, 496.78 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 12 )

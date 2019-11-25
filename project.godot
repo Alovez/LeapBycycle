@@ -21,6 +21,10 @@ boot_splash/image="res://Pic/ui/AloveZ_P5_Square.png"
 boot_splash/bg_color=Color( 0.0745098, 0.0745098, 0.0745098, 1 )
 config/icon="res://icon.png"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=512
@@ -37,6 +41,14 @@ boost={
  ]
 }
 
+[physics]
+
+2d/physics_engine="GodotPhysics"
+2d/thread_model=2
+
 [rendering]
 
+quality/2d/use_pixel_snap=true
+threads/thread_model=2
+environment/default_clear_color=Color( 0.403922, 0.403922, 0.403922, 1 )
 environment/default_environment="res://default_env.tres"

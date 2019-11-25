@@ -1,56 +1,27 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/Shit.gd" type="Script" id=1]
-[ext_resource path="res://Pic/shit/shit.png" type="Texture" id=2]
+[ext_resource path="res://Pic/shit/shit3.png" type="Texture" id=2]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 35.4649, 52.7263 )
-
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 21.2652, 63.7084 )
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 23.899, 63.4923 )
+[sub_resource type="OccluderPolygon2D" id=1]
+polygon = PoolVector2Array( -16.3587, -15.6042, -32.6714, -15.6042, -32.6714, -25.7996, -16.7666, -25.5957, -16.7666, -32.9364, -8.61024, -32.7325, -8.40633, -65.3577, 9.12974, -65.3577, 8.72192, -33.1403, 17.49, -32.9364, 17.0821, -24.7801, 33.1908, -24.7801, 32.783, -15.4003, 16.2665, -15.4003, 16.4704, -0.718948, 24.8306, -0.718948, 24.6267, 32.1102, 16.2665, 31.9063, 16.6537, 47.7886, 8.0919, 48.0264, 8.32973, 63.9609, -8.55606, 64.1987, -8.55606, 48.5021, -17.3557, 48.9777, -16.88, 32.5676, -24.2527, 32.0919, -24.2527, -0.0148544, -16.6422, -0.490513 )
 
 [node name="Shit" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="shit" type="Sprite" parent="."]
+light_mask = 2
 texture = ExtResource( 2 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
+visible = false
 collision_mask = 3
 mode = 3
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 polygon = PoolVector2Array( -8.24637, -32.3801, -8.35839, -64.0257, 8.4239, -64.0257, 8.43554, -32.2362, 16.4193, -32.2577, 16.4145, -24.2918, 32.9304, -24.2918, 32.9191, -15.0349, 16.44, -15.0345, 16.44, 0.283653, 24.4493, 0.283653, 24.4434, 32.5378, 16.4214, 32.5378, 16.4277, 48.5751, 7.99191, 48.558, 7.99191, 64.0162, -8.38639, 64.0162, -8.38639, 48.374, -16.1263, 48.3883, -16.0705, 32.5503, -24.1779, 32.5618, -24.1912, 0.191014, -16.1537, 0.169917, -16.0387, -15.0194, -32.2928, -15.0194, -32.3203, -24.0893, -15.9792, -24.0692, -16.0519, -32.3801 )
 
-[node name="TurnSensor" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TurnSensor"]
-position = Vector2( 2.38399, -117.66 )
-shape = SubResource( 1 )
-
-[node name="leftSensor" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="leftSensor"]
-position = Vector2( -85.9892, -143.701 )
-shape = SubResource( 2 )
-
-[node name="RightSensor" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RightSensor"]
-position = Vector2( 88.5343, -144.035 )
-shape = SubResource( 3 )
-[connection signal="body_entered" from="TurnSensor" to="." method="_on_TurnSensor_body_entered"]
-[connection signal="body_exited" from="TurnSensor" to="." method="_on_TurnSensor_body_exited"]
-[connection signal="body_entered" from="leftSensor" to="." method="_on_leftSensor_body_entered"]
-[connection signal="body_exited" from="leftSensor" to="." method="_on_leftSensor_body_exited"]
-[connection signal="body_entered" from="RightSensor" to="." method="_on_RightSensor_body_entered"]
-[connection signal="body_exited" from="RightSensor" to="." method="_on_RightSensor_body_exited"]
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 4
+occluder = SubResource( 1 )
+light_mask = 4

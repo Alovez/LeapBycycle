@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.280788, 0.608374, 1 )
+colors = PoolColorArray( 0.953125, 0.917639, 0.0446777, 1, 0.582031, 0, 1, 1, 0.0717545, 0.893375, 0.966797, 1, 0, 1, 0.203125, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=1]
+emission_shape = 1
+emission_sphere_radius = 256.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+angular_velocity = 15.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 2.0
+scale = 8.0
+scale_random = 1.0
+color_ramp = SubResource( 3 )
+
+[node name="Stars" type="Particles2D"]
+position = Vector2( 311.585, 208.991 )
+rotation = -1.91363
+amount = 30
+lifetime = 15.0
+preprocess = 15.0
+process_material = SubResource( 1 )

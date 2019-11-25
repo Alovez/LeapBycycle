@@ -15,7 +15,7 @@
 [ext_resource path="res://Pic/ui/Left.png" type="Texture" id=13]
 [ext_resource path="res://Pic/ui/Right.png" type="Texture" id=14]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "z_blink"
 loop = true
 tracks/0/type = "value"
@@ -31,8 +31,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.603922 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "RollLevels"
+[sub_resource type="Animation" id=2]
 length = 6.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Levels:rotation_degrees")
@@ -91,7 +90,7 @@ tracks/2/keys = {
 "values": [ true, false, true, false, true, false, true, false, true, false, true, false, true ]
 }
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 40
 font_data = ExtResource( 12 )
 
@@ -120,7 +119,7 @@ scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
 
 [node name="Z_blink" type="AnimationPlayer" parent="Z"]
-anims/z_blink = SubResource( 3 )
+anims/z_blink = SubResource( 1 )
 
 [node name="Levels" type="Position2D" parent="."]
 position = Vector2( 256, 120 )
@@ -163,14 +162,14 @@ rotation = 0.523599
 texture = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RollLevels = SubResource( 1 )
+anims/RollLevels = SubResource( 2 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 160.352
 margin_top = 436.432
 margin_right = 362.352
 margin_bottom = 495.432
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 text = "Level 0"
 align = 1
 valign = 1

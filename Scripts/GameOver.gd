@@ -1,17 +1,18 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var level_info
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	level_info = load_level()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func load_level():
+	var level_file = File.new()
+	level_file.open("user://level_info.save",  File.READ)
+	var level_info = parse_json(level_file.get_line())
+	level_file.close()
+	return level_info
 
 
 func _on_Button_button_up():
-	get_tree().change_scene("res://Scene/Level1.tscn")
+	get_tree().change_scene("res://Scene/Levels/Level%s.tscn" % str(int(level_info.get('level', 0)) + 1))

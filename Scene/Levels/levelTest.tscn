@@ -1,0 +1,81 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scene/Elements/RoadEnd.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scene/Elements/RoadSideEnd.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Pic/Road/end.png" type="Texture" id=3]
+[ext_resource path="res://Scene/UI/CommonUI.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scene/Levels/TestGod.gd" type="Script" id=5]
+[ext_resource path="res://Pic/god/god_normal_1.png" type="Texture" id=6]
+[ext_resource path="res://Scene/Elements/God.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Pic/Effects/light.png" type="Texture" id=8]
+[ext_resource path="res://Pic/shit/EX.png" type="Texture" id=9]
+[ext_resource path="res://Scene/Elements/Shit.tscn" type="PackedScene" id=10]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+[sub_resource type="OccluderPolygon2D" id=2]
+polygon = PoolVector2Array( -9.10571, -66.4589, 10.4746, -65.7596, 10.4746, -40.5848, 51.0341, -40.5848, 49.6354, 7.66687, 57.3278, 7.66687, 57.3278, 69.2053, -56.6581, 69.2053, -56.6581, 6.96765, -48.9658, 6.96765, -48.2665, -41.9834, -9.10571, -41.9834 )
+
+[node name="levelTest" type="Node2D"]
+
+[node name="RoadEnd" parent="." instance=ExtResource( 1 )]
+margin_left = -9.18508e-005
+margin_top = -124.45
+margin_right = 322.0
+margin_bottom = 403.55
+
+[node name="RoadSideEnd" parent="." instance=ExtResource( 2 )]
+
+[node name="end" type="Sprite" parent="."]
+position = Vector2( 156.36, 379.512 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 3 )
+
+[node name="CommonUI" parent="." instance=ExtResource( 4 )]
+
+[node name="TestGod" type="RigidBody2D" parent="."]
+position = Vector2( -175.03, -266.003 )
+mode = 2
+physics_material_override = SubResource( 1 )
+gravity_scale = 0.0
+continuous_cd = 1
+contact_monitor = true
+script = ExtResource( 5 )
+
+[node name="god_normal_1" type="Sprite" parent="TestGod"]
+position = Vector2( 111.476, 402.902 )
+texture = ExtResource( 6 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TestGod"]
+polygon = PoolVector2Array( 101.014, 368.391, 78.5455, 368.669, 78.2681, 438.294, 94.0793, 436.907, 92.4149, 453.273, 99.6271, 463.536, 100.737, 470.748, 124.869, 471.58, 121.818, 454.105, 141.235, 455.492, 149.28, 428.862, 145.674, 410.832, 132.636, 408.058, 128.753, 391.97, 143.732, 390.583, 150.667, 372.275, 134.856, 365.895, 121.541, 366.45, 122.096, 335.66, 102.956, 335.105 )
+
+[node name="Camera2D" type="Camera2D" parent="TestGod"]
+position = Vector2( 124.066, 280.441 )
+
+[node name="God" parent="." instance=ExtResource( 7 )]
+position = Vector2( 203.511, 412.283 )
+scale = Vector2( 0.25, 0.25 )
+
+[node name="Light2D" type="Light2D" parent="God"]
+position = Vector2( -5.23798, 227.14 )
+texture = ExtResource( 8 )
+mode = 3
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+shadow_item_cull_mask = 2
+
+[node name="EX" type="Sprite" parent="."]
+position = Vector2( 238.089, 441.712 )
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 9 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="EX"]
+light_mask = 2
+position = Vector2( 3.34497, 0 )
+occluder = SubResource( 2 )
+light_mask = 2
+
+[node name="Shit" parent="." instance=ExtResource( 10 )]
+position = Vector2( 271.012, 415.958 )
+scale = Vector2( 0.25, 0.25 )

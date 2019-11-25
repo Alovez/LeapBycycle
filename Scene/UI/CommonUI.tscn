@@ -4,11 +4,6 @@
 [ext_resource path="res://Scene/UI/map.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scene/UI/Energy.tscn" type="PackedScene" id=3]
 
-
-
-
-
-
 [node name="CommonUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

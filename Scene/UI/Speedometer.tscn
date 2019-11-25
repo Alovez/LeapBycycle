@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Speedometer.gd" type="Script" id=1]
 [ext_resource path="res://Pic/ui/speedometer.png" type="Texture" id=2]
 [ext_resource path="res://Pic/ui/cursor.png" type="Texture" id=3]
+[ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 4 )
 
 [node name="Speedometer" type="Control"]
 anchor_right = 1.0
@@ -21,3 +26,27 @@ rotation = -2.35619
 scale = Vector2( 0.629787, 0.629787 )
 texture = ExtResource( 3 )
 offset = Vector2( -6.92, -77.09 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 86.6835
+margin_top = 209.61
+margin_right = 132.684
+margin_bottom = 252.61
+custom_fonts/font = SubResource( 1 )
+text = "0.4"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 229.906
+margin_top = 67.9278
+margin_right = 275.906
+margin_bottom = 110.928
+custom_fonts/font = SubResource( 1 )
+text = "1.2"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 378.262
+margin_top = 205.503
+margin_right = 424.262
+margin_bottom = 248.503
+custom_fonts/font = SubResource( 1 )
+text = "2.0"

@@ -3,8 +3,10 @@ extends Node2D
 
 var tree
 var shit
+var express
 var trees = []
 var shits = []
+var expresses = []
 var distance = 10000
 
 # Called when the node enters the scene tree for the first time.
@@ -13,23 +15,36 @@ func _ready():
 	init_road()
 	init_tree()
 	init_shit()
+	init_express()
 	init_ui()
 
 
 func _process(delta):
 	update_shit()
+	update_express()
 	update_ui(delta)
 	if 430 - $God.position.y > distance:
-		save_level(1, $God.velocity)
+		save_level(2, $God.velocity)
 		get_tree().change_scene("res://Scene/Menu/LevelDone.tscn")
 		
 
+func init_express():
+	express = preload("res://Scene/Elements/Express.tscn")
+	for i in range(100, distance, 500):
+		var new_ex = express.instance()
+		new_ex.x = 155
+		new_ex.y =  -i
+		new_ex.scale = Vector2(0.25, 0.25)
+		new_ex.velocity = rand_range(0, 1)
+		add_child(new_ex)
+		expresses.append(new_ex)
+
 func init_shit():
 	shit = preload("res://Scene/Elements/Shit.tscn")
-	for i in range(int(distance / 200)):
+	for i in range(50, distance, 200):
 		var new_shit = shit.instance()
-		new_shit.x = rand_range(35, 250)
-		new_shit.y =  - i * 80 + 400
+		new_shit.x = rand_range(100, 200)
+		new_shit.y =  - i
 		new_shit.scale = Vector2(0.25, 0.25)
 		new_shit.velocity = rand_range(0, 1)
 		add_child(new_shit)
@@ -82,15 +97,19 @@ func init_ui():
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func update_shit():
-	for i in range(int(distance / 500)):
+	for i in range(len(shits)):
 		if shits[i].y < - distance:
 			shits[i].y = 520
+
+func update_express():
+	for i in range(len(expresses)):
+		if expresses[i].y < - distance:
+			expresses[i].y = 520
 
 func update_ui(dt):
 	$Camera2D.position.y = $God.position.y - 150
 	$Camera2D/UILayer/CommonUI/map.distance = $God.distance
 	$Camera2D/UILayer/CommonUI/Speedometer.velocity = $God.velocity
-	print($God.velocity)
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func _on_God_gameover():
