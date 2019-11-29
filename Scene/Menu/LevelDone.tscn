@@ -105,5 +105,23 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.921569, 0.627451, 0.627451, 1 )
 custom_colors/font_color_pressed = Color( 0.952941, 0.258824, 0.258824, 1 )
 text = "Retry"
+
+[node name="BackToLevel" type="Button" parent="."]
+margin_left = 349.026
+margin_top = 460.11
+margin_right = 496.026
+margin_bottom = 502.11
+custom_styles/hover = SubResource( 10 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.921569, 0.627451, 0.627451, 1 )
+custom_colors/font_color_pressed = Color( 0.952941, 0.258824, 0.258824, 1 )
+text = "Back To Levels"
 [connection signal="button_up" from="NextLevel" to="." method="_on_NextLevel_button_up"]
 [connection signal="button_up" from="Retry" to="." method="_on_Retry_button_up"]
+[connection signal="button_up" from="BackToLevel" to="." method="_on_BackToLevel_button_up"]

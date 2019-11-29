@@ -9,6 +9,8 @@ var tutorial_step = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	save_level(0, 0)
+	$God.connect("gameover", self, "_on_God_gameover")
 	read_settings()
 	init_road()
 	init_ui()
@@ -175,7 +177,7 @@ func read_settings():
 	var settings_file = File.new()
 	settings_file.open("user://settings.ini", File.READ)
 	var settings = parse_json(settings_file.get_line())
-	if typeof(settings) == TYPE_OBJECT:
+	if settings:
 		bypass_tutorial = settings.get("bypass_tutorial")
 		
 func save_level(level, final_velocity):
@@ -187,3 +189,7 @@ func save_level(level, final_velocity):
 	}
 	level_file.store_line(to_json(level_info))
 	level_file.close()
+	
+func _on_God_gameover():
+	save_level(0, 0)
+	get_tree().change_scene("res://Scene/Menu/GameOver.tscn")

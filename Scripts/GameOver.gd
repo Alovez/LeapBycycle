@@ -15,4 +15,4 @@ func load_level():
 
 
 func _on_Button_button_up():
-	get_tree().change_scene("res://Scene/Levels/Level%s.tscn" % str(int(level_info.get('level', 0)) + 1))
+	get_tree().change_scene("res://Scene/Levels/Level%s.tscn" % str(level_info.get('level', 0)))

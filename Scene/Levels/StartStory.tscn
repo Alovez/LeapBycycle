@@ -34,7 +34,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-005, 1e-005 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("TextArea:text")
@@ -134,7 +134,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1, 1.5, 2, 2.5, 4.5, 4.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.2, 0.2 ), Vector2( 0.2, 0.2 ), Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.3, 0.3 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Solarsystem:scale")
@@ -146,7 +146,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 2, 2.5, 3, 3.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-005, 1e-005 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.3, 0.3 ), Vector2( 0.3, 0.3 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("TextArea:custom_fonts/font:size")
@@ -170,7 +170,7 @@ tracks/6/keys = {
 "times": PoolRealArray( 0, 3, 3.5, 4.5, 4.9, 5.7, 7.5, 7.9, 8.5, 9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.1 ), Vector2( 0.2, 0.1 ), Vector2( 0.2, 0.1 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 1e-005, 1e-005 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.1 ), Vector2( 0.2, 0.1 ), Vector2( 0.2, 0.1 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 1e-05, 1e-05 ) ]
 }
 tracks/7/type = "value"
 tracks/7/path = NodePath("Gray/Label:rect_size")
@@ -242,7 +242,7 @@ tracks/12/keys = {
 "times": PoolRealArray( 6.55, 7, 7.5, 7.9 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0, 0 ) ]
 }
 tracks/13/type = "value"
 tracks/13/path = NodePath("Blue-3d:position")
@@ -309,10 +309,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.6, 2.3 ),
+"times": PoolRealArray( 0, 1.6, 2.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ "Skip", " kip", "  ip" ]
+"values": [ "Skip", "kip", "ip" ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -356,17 +356,17 @@ texture = ExtResource( 4 )
 
 [node name="clock" type="Sprite" parent="."]
 position = Vector2( 262.011, 172.369 )
-scale = Vector2( 1e-005, 1e-005 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
 [node name="Solarsystem" type="Sprite" parent="."]
 position = Vector2( 254.122, 149.455 )
-scale = Vector2( 1e-005, 1e-005 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 6 )
 
 [node name="Gray" type="Sprite" parent="."]
 position = Vector2( 261.288, 158.586 )
-scale = Vector2( 1e-005, 1e-005 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
@@ -396,7 +396,7 @@ anims/Opening = SubResource( 3 )
 
 [node name="leapyear" type="Sprite" parent="."]
 position = Vector2( 252.646, 151.022 )
-scale = Vector2( 1e-005, 1e-005 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 10 )
 region_rect = Rect2( 255, 110, 12, 4 )
 
@@ -408,13 +408,13 @@ margin_bottom = 31.5728
 color = Color( 1, 1, 1, 0.447059 )
 
 [node name="Skip" type="Label" parent="."]
-margin_left = 460.544
-margin_top = 14.2622
-margin_right = 497.544
-margin_bottom = 31.2622
+margin_left = 459.0
+margin_top = 14.0
+margin_right = 496.0
+margin_bottom = 31.0
 custom_fonts/font = SubResource( 4 )
 text = "Skip"
-align = 1
+align = 2
 valign = 1
 
 [node name="Z" type="Sprite" parent="."]

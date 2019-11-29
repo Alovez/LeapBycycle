@@ -23,8 +23,7 @@ scale_random = 1.0
 color_ramp = SubResource( 2 )
 
 [node name="MenuBackgroud" type="ColorRect"]
-margin_left = -0.663391
-margin_right = 515.337
+margin_right = 516.0
 margin_bottom = 517.0
 color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
 

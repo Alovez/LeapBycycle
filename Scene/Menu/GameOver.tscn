@@ -30,6 +30,8 @@ margin_bottom = -5.4165
 script = ExtResource( 1 )
 
 [node name="MenuBackgroud" parent="." instance=ExtResource( 2 )]
+margin_left = -5.0
+margin_right = 526.0
 
 [node name="crash" type="TextureRect" parent="."]
 margin_left = 196.135

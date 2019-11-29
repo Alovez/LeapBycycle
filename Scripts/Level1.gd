@@ -9,6 +9,7 @@ var distance = 10000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	save_level(1, 0)
 	$God.connect("gameover", self, "_on_God_gameover")
 	init_road()
 	init_tree()
@@ -90,10 +91,10 @@ func update_ui(dt):
 	$Camera2D.position.y = $God.position.y - 150
 	$Camera2D/UILayer/CommonUI/map.distance = $God.distance
 	$Camera2D/UILayer/CommonUI/Speedometer.velocity = $God.velocity
-	print($God.velocity)
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func _on_God_gameover():
+	save_level(1, 0)
 	get_tree().change_scene("res://Scene/Menu/GameOver.tscn")
 
 func save_level(level, final_velocity):

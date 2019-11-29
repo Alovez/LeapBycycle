@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Pic/Road/half_end.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/road_half_end.gd" type="Script" id=2]
+
+[node name="road_half_end" type="Node2D"]
+
+[node name="half_end" type="Sprite" parent="."]
+position = Vector2( -1.89584, -1.52588e-05 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="road" type="RigidBody2D" parent="half_end"]
+mode = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="half_end/road"]
+position = Vector2( -6.31946, 0.315979 )
+polygon = PoolVector2Array( -511.544, -524.617, 20.3018, 7.35523, 18.4057, 511.901, -506.221, 512.613 )

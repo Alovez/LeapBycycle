@@ -16,8 +16,8 @@ var height = 128
 func _ready():
 	width = width * scale.x
 	height = height * scale.y
-	position.x = x
-	position.y = y
+#	position.x = x
+#	position.y = y
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
@@ -34,20 +34,29 @@ func avoid_obstacles(delta_y):
 	var end = Vector2(x, position.y - (delta_y * 10))
 	var front = get_front(space_state, delta_y)
 	if front:
-		start = Vector2(front.position.x, front.position.y)
-		end = Vector2(front.position.x - width, front.get("collider").get_node('../').position.y)
-		var left = space_state.intersect_ray(start, end, [front.get("collider")])
-		if left:
+		if front.get("collider").name == 'road':
+			x += side_velocity
+		else:
+			start = Vector2(front.position.x, front.position.y)
+			end = Vector2(front.position.x - width, front.get("collider").get_node('../').position.y)
+			var left = space_state.intersect_ray(start, end, [front.get("collider")])
 			start = Vector2(front.position.x, front.position.y)
 			end = Vector2(front.position.x + width, front.position.y)
 			var right = space_state.intersect_ray(start, end, [front.get("collider")])
-			if right:
-				pass
+			var left_or_right = false
+			if left and right:
+				left_or_right = randi() % 1
+			if left:
+				left_or_right = true
+			if left_or_right:
+				x -= side_velocity
 			else:
 				x += side_velocity
+			var test_value = front.get("collider").get_node('../')
+		if front.get("collider").get_node('../').get("velocity"):
+			drag_velocity = abs(front.get("collider").get_node('../').velocity - velocity)
 		else:
-			x -=  side_velocity
-		drag_velocity = abs(front.get("collider").get_node('../').velocity - velocity)
+			drag_velocity = velocity - 0.1
 	else:
 		drag_velocity = 0
 		

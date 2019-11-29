@@ -1,13 +1,13 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Scripts/Level2.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Level3.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Elements/God.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scene/Elements/LevelCamera.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.7, 5000 )
 
-[node name="Level2" type="Node2D"]
+[node name="Level3" type="Node2D"]
 position = Vector2( 0.773804, -0.773773 )
 script = ExtResource( 1 )
 
@@ -20,12 +20,12 @@ z_index = 100
 position = Vector2( 254.7, 254.192 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-mode = 1
+mode = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2( -27.7009, 236.011 )
+position = Vector2( -28.6593, 236.011 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
-position = Vector2( 335.907, 231.569 )
+position = Vector2( 343.191, 228.344 )
 shape = SubResource( 1 )

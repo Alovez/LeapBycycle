@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Scripts/LevelChoose.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Menu/MenuBackgroud.tscn" type="PackedScene" id=2]
@@ -98,6 +98,12 @@ font_data = ExtResource( 12 )
 size = 23
 font_data = ExtResource( 12 )
 
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 22
+font_data = ExtResource( 12 )
+
 [node name="LevelChoose" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -113,7 +119,7 @@ margin_bottom = 515.947
 position = Vector2( 256, 120 )
 
 [node name="Z" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.626852 )
+editor/display_folded = true
 position = Vector2( 258.201, 357.615 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
@@ -122,8 +128,9 @@ texture = ExtResource( 4 )
 anims/z_blink = SubResource( 1 )
 
 [node name="Levels" type="Position2D" parent="."]
+editor/display_folded = true
 position = Vector2( 256, 120 )
-rotation = 1.5708
+rotation = 0.523599
 scale = Vector2( 0.5, 0.5 )
 
 [node name="six" type="Sprite" parent="Levels"]
@@ -186,6 +193,7 @@ align = 1
 valign = 1
 
 [node name="Left" type="Sprite" parent="."]
+editor/display_folded = true
 position = Vector2( 158.475, 465.212 )
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 13 )
@@ -193,3 +201,19 @@ texture = ExtResource( 13 )
 [node name="Right" type="Sprite" parent="Left"]
 position = Vector2( 663.16, 0 )
 texture = ExtResource( 14 )
+
+[node name="BackToMenu" type="Button" parent="."]
+margin_left = 19.0
+margin_top = 474.0
+margin_right = 68.0
+margin_bottom = 498.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 5 )
+custom_styles/focus = SubResource( 5 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+custom_colors/font_color_hover = Color( 1, 0.72549, 0.72549, 1 )
+custom_colors/font_color_pressed = Color( 1, 0.545098, 0.545098, 1 )
+text = "Back"
+[connection signal="button_up" from="BackToMenu" to="." method="_on_BackToMenu_button_up"]

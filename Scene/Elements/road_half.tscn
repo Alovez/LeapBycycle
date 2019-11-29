@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Pic/Road/half.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/road_half.gd" type="Script" id=2]
+
+[node name="road_half" type="Node2D"]
+
+[node name="half" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="road" type="RigidBody2D" parent="half"]
+mode = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="half/road"]
+polygon = PoolVector2Array( -512, -512, 15, -512, 15, 512, -512, 512 )

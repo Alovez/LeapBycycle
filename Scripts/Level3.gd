@@ -11,7 +11,7 @@ var distance = 10000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	save_level(2, 0)
+	save_level(3, 0)
 	$God.connect("gameover", self, "_on_God_gameover")
 	init_road()
 	init_tree()
@@ -25,7 +25,7 @@ func _process(delta):
 	update_express()
 	update_ui(delta)
 	if 430 - $God.position.y > distance:
-		save_level(2, $God.velocity)
+		save_level(3, $God.velocity)
 		get_tree().change_scene("res://Scene/Menu/LevelDone.tscn")
 		
 
@@ -33,10 +33,10 @@ func init_express():
 	express = preload("res://Scene/Elements/Express.tscn")
 	for i in range(100, distance, 500):
 		var new_ex = express.instance()
-		new_ex.x = 155
+		new_ex.x = 180
 		new_ex.y =  -i
 		new_ex.scale = Vector2(0.25, 0.25)
-		new_ex.velocity = rand_range(0, 1)
+		new_ex.velocity = rand_range(0.3, 1)
 		add_child(new_ex)
 		expresses.append(new_ex)
 
@@ -44,10 +44,10 @@ func init_shit():
 	shit = preload("res://Scene/Elements/Shit.tscn")
 	for i in range(50, distance, 200):
 		var new_shit = shit.instance()
-		new_shit.x = rand_range(100, 200)
+		new_shit.x = rand_range(150, 200)
 		new_shit.y =  - i
 		new_shit.scale = Vector2(0.25, 0.25)
-		new_shit.velocity = rand_range(0, 1)
+		new_shit.velocity = rand_range(0.1, 1)
 		add_child(new_shit)
 		shits.append(new_shit)
 
@@ -56,7 +56,8 @@ func init_road():
 		_new_road(- i * 256 + 500)
 	_new_road_end()
 	_new_road(-int(distance / 256) * 256 + 512, "res://Pic/Road/end.png")
-	
+	_new_half_road(-800)
+	_new_half_road(-5000)
 
 func _new_road_end():
 	var road_end = load("res://Scene/Elements/RoadEnd.tscn")
@@ -79,6 +80,32 @@ func _new_road(y, pic="res://Pic/Road/road.png"):
 	road.scale.y = 0.25
 	road.light_mask = 1
 	add_child(road)
+
+func _new_half_road(y):
+	var road_half_start = load("res://Scene/Elements/road_half_start.tscn")
+	var road_half = load("res://Scene/Elements/road_half.tscn")
+	var road_half_end = load("res://Scene/Elements/road_half_end.tscn")
+	
+	var new_road_half_start = road_half_start.instance()
+	new_road_half_start.position.x = 155
+	new_road_half_start.position.y = y
+	new_road_half_start.scale = Vector2(0.25, 0.25)
+	new_road_half_start.light_mask = 1
+	add_child(new_road_half_start)
+	
+	for i in range(8):
+		var new_half = road_half.instance()
+		new_half.position = Vector2(155, y - 256 * (i + 1))
+		new_half.scale = Vector2(0.25, 0.25)
+		new_half.light_mask = 1
+		add_child(new_half)
+	
+	var new_road_half_end = road_half_end.instance()
+	new_road_half_end.position.x = 155
+	new_road_half_end.position.y = y - 256 * 9
+	new_road_half_end.scale = Vector2(0.25, 0.25)
+	new_road_half_end.light_mask = 1
+	add_child(new_road_half_end)
 
 func init_tree():
 	tree = preload("res://Scene/Elements/Tree.tscn")
@@ -114,7 +141,7 @@ func update_ui(dt):
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func _on_God_gameover():
-	save_level(2, 0)
+	save_level(3, 0)
 	get_tree().change_scene("res://Scene/Menu/GameOver.tscn")
 
 func save_level(level, final_velocity):

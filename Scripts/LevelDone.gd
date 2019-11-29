@@ -20,18 +20,23 @@ func record_high_score():
 	var score_file = File.new()
 	score_file.open("user://high_score.save", File.READ)
 	var scores = parse_json(score_file.get_line())
+	score_file.close()
 	if scores:
-		if scores.get(level) < level_info.final_velocity:
+		if scores.get(str(level), 0) < level_info.final_velocity:
 			scores[level] = level_info.final_velocity
-			score_file.close()
 			score_file.open("user://high_score.save", File.WRITE)
 			score_file.store_line(to_json(scores))
+	else:
+		scores = {}
+		scores[level] = level_info.final_velocity
+		score_file.open("user://high_score.save", File.WRITE)
+		score_file.store_line(to_json(scores))
 	score_file.close()
 
 func _on_NextLevel_button_up():
 	var next_level = level_info.get('level', 0) + 1
 	var next_scene 
-	if next_level < 3:
+	if next_level < 4:
 		next_scene = "res://Scene/Levels/Level%s.tscn" % next_level
 	else:
 		next_scene = "res://Scene/Levels/StartStory.tscn"
@@ -40,3 +45,7 @@ func _on_NextLevel_button_up():
 
 func _on_Retry_button_up():
 	get_tree().change_scene("res://Scene/Levels/Level%s.tscn" % level_info.get('level', 0))
+
+
+func _on_BackToLevel_button_up():
+	get_tree().change_scene("res://Scene/Menu/LevelChoose.tscn")
