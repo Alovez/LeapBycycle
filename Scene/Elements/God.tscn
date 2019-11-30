@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/God.gd" type="Script" id=1]
 [ext_resource path="res://Pic/god/god_left_1.png" type="Texture" id=2]
@@ -9,6 +9,9 @@
 [ext_resource path="res://Pic/god/god_normal_2.png" type="Texture" id=7]
 [ext_resource path="res://Pic/god/crash.png" type="Texture" id=8]
 [ext_resource path="res://Pic/Effects/light.png" type="Texture" id=9]
+[ext_resource path="res://SFX/ride.wav" type="AudioStream" id=10]
+[ext_resource path="res://SFX/slide.wav" type="AudioStream" id=11]
+[ext_resource path="res://SFX/crash.wav" type="AudioStream" id=12]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -57,6 +60,7 @@ polygon = PoolVector2Array( 8.24216, -32.4295, 32.6223, -32.4546, 32.6223, 48.13
 [node name="Light2D" type="Light2D" parent="."]
 position = Vector2( -1.44449, 0.254639 )
 scale = Vector2( 1.95606, 2.51825 )
+enabled = false
 texture = ExtResource( 9 )
 offset = Vector2( 0, -250 )
 energy = 2.0
@@ -64,4 +68,16 @@ mode = 3
 range_item_cull_mask = 2
 shadow_enabled = true
 shadow_item_cull_mask = 2
+
+[node name="ride_sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = -0.5
+
+[node name="slide" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -0.5
+
+[node name="crash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 12 )
+volume_db = -0.5
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

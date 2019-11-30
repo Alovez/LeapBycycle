@@ -1,5 +1,6 @@
 extends Node2D
 
+var sound_delay = 0
 var kd = 2.0
 var mess = 10
 var energy_recovery = 0.1
@@ -25,6 +26,7 @@ func _ready():
 #func _process(delta):
 #	pass
 func _physics_process(delta):
+	sound_delay += delta
 	if crashed > 0:
 		crashed -= 1
 	else:
@@ -45,6 +47,7 @@ func _physics_process(delta):
 func update_force():
 	if Input.is_action_pressed('boost'):
 		force = 10
+		sound_delay = 1
 		$AnimatedSprite.set_speed_scale(2)
 	else:
 		force = 5
@@ -62,6 +65,14 @@ func update_animation():
 	if not Input.is_action_pressed('ui_up') or energy <= 0:
 		force = 0
 		$AnimatedSprite.stop()
+	
+	if $AnimatedSprite.playing and not $ride_sfx.playing and sound_delay > 0.3:
+		sound_delay = 0
+		$ride_sfx.play()
+	
+	if not $AnimatedSprite.playing and not $slide.playing and velocity > 0.001 and sound_delay > 0.1 * 1/velocity:
+		sound_delay = 0
+		$slide.play()
 	
 	if Input.is_action_pressed("ui_down") and velocity > 0:
 		break_force = 8
@@ -92,6 +103,7 @@ func update_energy(f):
 
 func _on_Area2D_body_entered(body):
 	if body != $RigidBody2D:
+		$crash.play()
 		if velocity < 1.5:
 			$AnimatedSprite.play('crash')
 			velocity = 0

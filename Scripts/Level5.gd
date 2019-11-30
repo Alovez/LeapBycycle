@@ -54,8 +54,9 @@ func init_road():
 		_new_road(- i * 256 + 500)
 	_new_road_end()
 	_new_road(-int(distance / 256) * 256 + 512, "res://Pic/Road/end.png")
-	_new_half_road(-800)
-	_new_half_road(-5000)
+	_new_crosswalk(-800)
+	_new_half_road(-3000)
+	_new_crosswalk(-6000)
 
 func _new_road_end():
 	var road_end = load("res://Scene/Elements/RoadEnd.tscn")
@@ -105,6 +106,14 @@ func _new_half_road(y):
 	new_road_half_end.light_mask = 1
 	add_child(new_road_half_end)
 
+func _new_crosswalk(y):
+	var crosswalk = load("res://Scene/Elements/Crosswalk.tscn")
+	var new_crosswalk = crosswalk.instance()
+	new_crosswalk.position.x = 155
+	new_crosswalk.position.y = y
+	new_crosswalk.scale = Vector2(0.25, 0.25)
+	add_child(new_crosswalk)
+	
 func init_tree():
 	tree = preload("res://Scene/Elements/Tree.tscn")
 	for i in range(int(distance / 80)):
@@ -151,3 +160,18 @@ func save_level(level, final_velocity):
 	}
 	level_file.store_line(to_json(level_info))
 	level_file.close()
+	var score_file = File.new()
+	score_file.open("user://high_score.save", File.READ)
+	var scores = parse_json(score_file.get_line())
+	score_file.close()
+	if scores:
+		if scores.get(str(level), 0) < level_info.final_velocity:
+			scores[level] = level_info.final_velocity
+			score_file.open("user://high_score.save", File.WRITE)
+			score_file.store_line(to_json(scores))
+	else:
+		scores = {}
+		scores[level] = level_info.final_velocity
+		score_file.open("user://high_score.save", File.WRITE)
+		score_file.store_line(to_json(scores))
+	score_file.close()

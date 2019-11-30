@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Pic/Effects/DarkLight (3).png" type="Texture" id=1]
+
+[node name="NightMask" type="Node2D"]
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -4, -203.462 )
+scale = Vector2( 2.196, 2.40292 )
+texture = ExtResource( 1 )
+energy = 2.0
+mode = 3
+range_item_cull_mask = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+light_mask = 2
+margin_left = -1275.0
+margin_top = -1964.0
+margin_right = 1240.0
+margin_bottom = 1164.0
+color = Color( 0, 0, 0, 1 )

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Level5.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Elements/God.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scene/Elements/LevelCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/Effects/NightMask.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scene/Elements/LevelCamera.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 59.7, 5000 )
@@ -16,7 +17,9 @@ position = Vector2( 150, 430 )
 scale = Vector2( 0.25, 0.25 )
 z_index = 100
 
-[node name="Camera2D" parent="." instance=ExtResource( 3 )]
+[node name="NightMask" parent="God" instance=ExtResource( 3 )]
+
+[node name="Camera2D" parent="." instance=ExtResource( 4 )]
 position = Vector2( 254.7, 254.192 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]

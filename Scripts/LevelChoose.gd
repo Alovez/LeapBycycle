@@ -20,6 +20,7 @@ func _process(delta):
 		released_button = true
 	
 	if released_button and Input.is_action_pressed("boost"):
+		$HighScore.text = "Loading....."
 		if current_level == '0':
 			get_tree().change_scene("res://Scene/Levels/Level0.tscn")
 		elif current_level == '1':
@@ -28,6 +29,10 @@ func _process(delta):
 			get_tree().change_scene("res://Scene/Levels/Level2.tscn")
 		elif current_level == '3':
 			get_tree().change_scene("res://Scene/Levels/Level3.tscn")
+		elif current_level == '4':
+			get_tree().change_scene("res://Scene/Levels/Level4.tscn")
+		elif current_level == '5':
+			get_tree().change_scene("res://Scene/Levels/Level5.tscn")
 
 func waiting_input(level_num):
 	$AnimationPlayer.stop(false)

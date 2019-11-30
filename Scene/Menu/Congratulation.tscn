@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scripts/hooray.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Scene/Menu/Congratulation.tres" type="Material" id=4]
+[ext_resource path="res://Pic/ui/Z.png" type="Texture" id=5]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.280788, 0.608374, 1 )
@@ -26,7 +27,7 @@ scale_random = 1.0
 color_ramp = SubResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 40
+size = 35
 font_data = ExtResource( 3 )
 
 [sub_resource type="Animation" id=5]
@@ -79,6 +80,138 @@ tracks/0/keys = {
 "values": [ 10.0, 200.0, 10.0 ]
 }
 
+[sub_resource type="Animation" id=10]
+resource_name = "Credits"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Stars:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -109.643, -180.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Stars:process_material:linear_accel")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 2.0, 100.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Stars:amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 30, 100 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Stars:lifetime")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 15.0, 5.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Stars:process_material:emission_shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1, 2 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Stars:process_material:emission_sphere_radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 256.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Stars:process_material:emission_box_extents")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.5 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 300, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("FinalVelocity:rect_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 13.2789, 141.987 ), Vector2( 5.94321, 534.204 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Credits:rect_position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 2, 25 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, 530.618 ), Vector2( 8, 530.618 ), Vector2( 8, -1617.77 ) ]
+}
+
+[sub_resource type="DynamicFont" id=11]
+size = 42
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=12]
+resource_name = "press_z"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.3, 0.3 ), Vector2( 0.2, 0.2 ), Vector2( 0.3, 0.3 ) ]
+}
+
 [node name="MenuBackgroud" type="ColorRect"]
 margin_right = 516.0
 margin_bottom = 517.0
@@ -86,23 +219,24 @@ color = Color( 0.0117647, 0.00392157, 0.129412, 1 )
 script = ExtResource( 1 )
 
 [node name="Stars" parent="." instance=ExtResource( 2 )]
-position = Vector2( 312.248, 208.991 )
+position = Vector2( 272.146, -65.3651 )
 process_material = SubResource( 3 )
 
 [node name="FinalVelocity" type="Label" parent="."]
-margin_left = 13.2789
-margin_top = 141.987
-margin_right = 505.279
-margin_bottom = 322.987
+margin_left = 12.7899
+margin_top = 168.135
+margin_right = 506.79
+margin_bottom = 349.135
 custom_fonts/font = SubResource( 4 )
 text = "Congratulations!!
-Your Finnal Velocity is
+Your Finnal Total Velocity is
 
 Thanks for your playing!"
 align = 1
 valign = 1
 
 [node name="Particles2D" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 0, 168 )
 rotation = -1.13446
 amount = 40
@@ -112,6 +246,7 @@ process_material = ExtResource( 4 )
 anims/hooray = SubResource( 5 )
 
 [node name="Particles2D2" type="Particles2D" parent="."]
+visible = false
 position = Vector2( 513.188, 170.791 )
 rotation = -2.79106
 amount = 40
@@ -119,3 +254,62 @@ process_material = SubResource( 8 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Particles2D2"]
 anims/hooray = SubResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Credits = SubResource( 10 )
+
+[node name="Credits" type="Label" parent="."]
+margin_left = 8.0
+margin_top = 530.618
+margin_right = 500.0
+margin_bottom = 2447.62
+custom_fonts/font = SubResource( 11 )
+text = "Made by AloveZ
+
+
+
+
+Level Design
+AloveZ
+xxxxx
+
+QA
+xxxxx
+
+Programer
+AloveZ
+
+Graphic
+AloveZ
+
+Sound
+AloveZ
+
+Story
+AloveZ
+
+Special Thanks
+ZloveA
+
+
+
+
+
+Dedicated to 
+My grandpa
+
+
+
+
+
+Thank you again, for playing!!!"
+align = 1
+autowrap = true
+
+[node name="Z" type="Sprite" parent="."]
+position = Vector2( 478.545, 480.12 )
+scale = Vector2( 0.263778, 0.263778 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Z"]
+anims/press_z = SubResource( 12 )

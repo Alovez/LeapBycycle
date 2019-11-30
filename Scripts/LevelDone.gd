@@ -34,6 +34,7 @@ func record_high_score():
 	score_file.close()
 
 func _on_NextLevel_button_up():
+	$NextLevel.text = "Loading..."
 	var next_level = level_info.get('level', 0) + 1
 	var next_scene 
 	if next_level < 6:

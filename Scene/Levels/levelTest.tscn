@@ -11,7 +11,6 @@
 [ext_resource path="res://Pic/shit/EX.png" type="Texture" id=9]
 [ext_resource path="res://Scene/Elements/Shit.tscn" type="PackedScene" id=10]
 
-
 [sub_resource type="PhysicsMaterial" id=1]
 
 [sub_resource type="OccluderPolygon2D" id=2]
@@ -20,7 +19,7 @@ polygon = PoolVector2Array( -9.10571, -66.4589, 10.4746, -65.7596, 10.4746, -40.
 [node name="levelTest" type="Node2D"]
 
 [node name="RoadEnd" parent="." instance=ExtResource( 1 )]
-margin_left = -9.18508e-005
+margin_left = -9.18508e-05
 margin_top = -124.45
 margin_right = 322.0
 margin_bottom = 403.55
