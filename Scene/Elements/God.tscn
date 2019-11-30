@@ -5,9 +5,9 @@
 [ext_resource path="res://Pic/god/god_left_2.png" type="Texture" id=3]
 [ext_resource path="res://Pic/god/god_right_1.png" type="Texture" id=4]
 [ext_resource path="res://Pic/god/god_right_2.png" type="Texture" id=5]
-[ext_resource path="res://Pic/god/crash.png" type="Texture" id=6]
-[ext_resource path="res://Pic/god/god_normal_1.png" type="Texture" id=7]
-[ext_resource path="res://Pic/god/god_normal_2.png" type="Texture" id=8]
+[ext_resource path="res://Pic/god/god_normal_1.png" type="Texture" id=6]
+[ext_resource path="res://Pic/god/god_normal_2.png" type="Texture" id=7]
+[ext_resource path="res://Pic/god/crash.png" type="Texture" id=8]
 [ext_resource path="res://Pic/Effects/light.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -22,14 +22,14 @@ animations = [ {
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": true,
-"name": "crash",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "ride",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "crash",
 "speed": 5.0
 } ]
 

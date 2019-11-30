@@ -11,7 +11,7 @@ var distance = 10000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	save_level(3, 0)
+	save_level(5, 0)
 	$God.connect("gameover", self, "_on_God_gameover")
 	init_road()
 	init_tree()
@@ -24,14 +24,14 @@ func _process(delta):
 	update_express()
 	update_ui(delta)
 	if 430 - $God.position.y > distance:
-		save_level(3, $God.velocity)
-		get_tree().change_scene("res://Scene/Menu/LevelDone.tscn")
+		save_level(5, $God.velocity)
+		get_tree().change_scene("res://Scene/Menu/Congratulation.tscn")
 
 func init_express():
 	express = preload("res://Scene/Elements/Express.tscn")
 	for i in range(100, distance, 500):
 		var new_ex = express.instance()
-		new_ex.x = rand_range(180, 200)
+		new_ex.x = 180
 		new_ex.y =  -i
 		new_ex.scale = Vector2(0.25, 0.25)
 		new_ex.velocity = rand_range(0.3, 1)
@@ -42,7 +42,7 @@ func init_shit():
 	shit = preload("res://Scene/Elements/Shit.tscn")
 	for i in range(50, distance, 200):
 		var new_shit = shit.instance()
-		new_shit.x = rand_range(180, 200)
+		new_shit.x = rand_range(150, 200)
 		new_shit.y =  - i
 		new_shit.scale = Vector2(0.25, 0.25)
 		new_shit.velocity = rand_range(0.1, 1)
@@ -139,7 +139,7 @@ func update_ui(dt):
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func _on_God_gameover():
-	save_level(3, 0)
+	save_level(5, 0)
 	get_tree().change_scene("res://Scene/Menu/GameOver.tscn")
 
 func save_level(level, final_velocity):

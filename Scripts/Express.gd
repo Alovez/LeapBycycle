@@ -30,29 +30,34 @@ func avoid_obstacles(delta_y):
 	var end = Vector2(x, position.y - (delta_y * 10))
 	var front = get_front(space_state, delta_y)
 	if front:
-		if front.get("collider").name == 'road':
-			x += side_velocity
+		if front.get("collider").name == 'TrafficBody':
+			drag_velocity = velocity
 		else:
-			start = Vector2(front.position.x, front.position.y)
-			end = Vector2(front.position.x - width, front.get("collider").get_node('../').position.y)
-			var exception = [front.get("collider")]
-			var left = space_state.intersect_ray(start, end, exception)
-			start = Vector2(front.position.x, front.position.y)
-			end = Vector2(front.position.x + width, front.position.y)
-			var right = space_state.intersect_ray(start, end, exception)
-			var left_or_right = false
-			if left and right:
-				left_or_right = randi() % 1
-			if left:
-				left_or_right = true
-			if left_or_right:
-				x -= side_velocity
-			else:
+			if front.get("collider").name == 'road':
 				x += side_velocity
-		if front.get("collider").get_node('../').get("velocity"):
-			drag_velocity = abs(front.get("collider").get_node('../').velocity - velocity)
-		else:
-			drag_velocity = velocity - 0.1
+			else:
+				start = Vector2(front.position.x, front.position.y)
+				end = Vector2(front.position.x - width, front.get("collider").get_node('../').position.y)
+				var exception = [front.get("collider")]
+				var left = space_state.intersect_ray(start, end, exception)
+				start = Vector2(front.position.x, front.position.y)
+				end = Vector2(front.position.x + width, front.position.y)
+				var right = space_state.intersect_ray(start, end, exception)
+				var left_or_right = false
+				if left and right:
+					left_or_right = randi() % 1
+				if left:
+					left_or_right = true
+				if left_or_right and x > 40:
+					x -= side_velocity
+				elif not left_or_right and x < 267:
+					x += side_velocity
+			var target = front.get("collider").get_node('../')
+			if target.get("velocity") and target.get("drag_velocity"):
+				var target_v = target.velocity - target.drag_velocity
+				drag_velocity = abs(target_v - velocity)
+			else:
+				drag_velocity = velocity - 0.1
 	else:
 		drag_velocity = 0
 		

@@ -33,7 +33,7 @@ func init_express():
 	express = preload("res://Scene/Elements/Express.tscn")
 	for i in range(100, distance, 500):
 		var new_ex = express.instance()
-		new_ex.x = 155
+		new_ex.x = rand_range(100, 200)
 		new_ex.y =  -i
 		new_ex.scale = Vector2(0.25, 0.25)
 		new_ex.velocity = rand_range(0, 1)

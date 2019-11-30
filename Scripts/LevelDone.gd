@@ -36,7 +36,7 @@ func record_high_score():
 func _on_NextLevel_button_up():
 	var next_level = level_info.get('level', 0) + 1
 	var next_scene 
-	if next_level < 4:
+	if next_level < 6:
 		next_scene = "res://Scene/Levels/Level%s.tscn" % next_level
 	else:
 		next_scene = "res://Scene/Levels/StartStory.tscn"

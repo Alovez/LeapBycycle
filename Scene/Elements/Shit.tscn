@@ -14,7 +14,6 @@ light_mask = 2
 texture = ExtResource( 2 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
-visible = false
 collision_mask = 3
 mode = 3
 

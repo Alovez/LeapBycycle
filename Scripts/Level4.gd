@@ -11,7 +11,7 @@ var distance = 10000
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	save_level(3, 0)
+	save_level(4, 0)
 	$God.connect("gameover", self, "_on_God_gameover")
 	init_road()
 	init_tree()
@@ -24,14 +24,14 @@ func _process(delta):
 	update_express()
 	update_ui(delta)
 	if 430 - $God.position.y > distance:
-		save_level(3, $God.velocity)
+		save_level(4, $God.velocity)
 		get_tree().change_scene("res://Scene/Menu/LevelDone.tscn")
 
 func init_express():
 	express = preload("res://Scene/Elements/Express.tscn")
 	for i in range(100, distance, 500):
 		var new_ex = express.instance()
-		new_ex.x = rand_range(180, 200)
+		new_ex.x = 180
 		new_ex.y =  -i
 		new_ex.scale = Vector2(0.25, 0.25)
 		new_ex.velocity = rand_range(0.3, 1)
@@ -42,7 +42,7 @@ func init_shit():
 	shit = preload("res://Scene/Elements/Shit.tscn")
 	for i in range(50, distance, 200):
 		var new_shit = shit.instance()
-		new_shit.x = rand_range(180, 200)
+		new_shit.x = rand_range(150, 200)
 		new_shit.y =  - i
 		new_shit.scale = Vector2(0.25, 0.25)
 		new_shit.velocity = rand_range(0.1, 1)
@@ -54,8 +54,9 @@ func init_road():
 		_new_road(- i * 256 + 500)
 	_new_road_end()
 	_new_road(-int(distance / 256) * 256 + 512, "res://Pic/Road/end.png")
-	_new_half_road(-800)
-	_new_half_road(-5000)
+	_new_crosswalk(-800)
+	_new_half_road(-3000)
+	_new_crosswalk(-6000)
 
 func _new_road_end():
 	var road_end = load("res://Scene/Elements/RoadEnd.tscn")
@@ -105,6 +106,14 @@ func _new_half_road(y):
 	new_road_half_end.light_mask = 1
 	add_child(new_road_half_end)
 
+func _new_crosswalk(y):
+	var crosswalk = load("res://Scene/Elements/Crosswalk.tscn")
+	var new_crosswalk = crosswalk.instance()
+	new_crosswalk.position.x = 155
+	new_crosswalk.position.y = y
+	new_crosswalk.scale = Vector2(0.25, 0.25)
+	add_child(new_crosswalk)
+
 func init_tree():
 	tree = preload("res://Scene/Elements/Tree.tscn")
 	for i in range(int(distance / 80)):
@@ -139,7 +148,7 @@ func update_ui(dt):
 	$Camera2D/UILayer/CommonUI/Energy.energy = $God.energy
 
 func _on_God_gameover():
-	save_level(3, 0)
+	save_level(4, 0)
 	get_tree().change_scene("res://Scene/Menu/GameOver.tscn")
 
 func save_level(level, final_velocity):
