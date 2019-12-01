@@ -1,17 +1,19 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scripts/God.gd" type="Script" id=1]
 [ext_resource path="res://Pic/god/god_left_1.png" type="Texture" id=2]
 [ext_resource path="res://Pic/god/god_left_2.png" type="Texture" id=3]
 [ext_resource path="res://Pic/god/god_right_1.png" type="Texture" id=4]
 [ext_resource path="res://Pic/god/god_right_2.png" type="Texture" id=5]
-[ext_resource path="res://Pic/god/god_normal_1.png" type="Texture" id=6]
-[ext_resource path="res://Pic/god/god_normal_2.png" type="Texture" id=7]
-[ext_resource path="res://Pic/god/crash.png" type="Texture" id=8]
+[ext_resource path="res://Pic/god/crash.png" type="Texture" id=6]
+[ext_resource path="res://Pic/god/god_normal_1.png" type="Texture" id=7]
+[ext_resource path="res://Pic/god/god_normal_2.png" type="Texture" id=8]
 [ext_resource path="res://Pic/Effects/light.png" type="Texture" id=9]
 [ext_resource path="res://SFX/ride.wav" type="AudioStream" id=10]
 [ext_resource path="res://SFX/slide.wav" type="AudioStream" id=11]
 [ext_resource path="res://SFX/crash.wav" type="AudioStream" id=12]
+[ext_resource path="res://Music/低速.wav" type="AudioStream" id=13]
+[ext_resource path="res://Music/高速.wav" type="AudioStream" id=14]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -25,14 +27,14 @@ animations = [ {
 "name": "right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
-"loop": true,
-"name": "ride",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "crash",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "ride",
 "speed": 5.0
 } ]
 
@@ -58,7 +60,7 @@ visible = false
 polygon = PoolVector2Array( 8.24216, -32.4295, 32.6223, -32.4546, 32.6223, 48.1398, 7.94262, 48.1393, 7.94262, 63.8178, -8.37846, 63.8178, -8.32768, 48.1314, -32.1533, 48.1393, -32.2004, -32.447, -8.44449, -32.447, -8.39079, -64.6411, 8.2469, -64.6411 )
 
 [node name="Light2D" type="Light2D" parent="."]
-position = Vector2( -1.44449, 0.254639 )
+position = Vector2( -2.21005, -0.510925 )
 scale = Vector2( 1.95606, 2.51825 )
 enabled = false
 texture = ExtResource( 9 )
@@ -80,4 +82,10 @@ volume_db = -0.5
 [node name="crash" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 12 )
 volume_db = -0.5
+
+[node name="low_speed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )
+
+[node name="high_speed" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 14 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

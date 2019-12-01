@@ -1,10 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/hooray.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Scene/Menu/Congratulation.tres" type="Material" id=4]
-[ext_resource path="res://Pic/ui/Z.png" type="Texture" id=5]
+[ext_resource path="res://Pic/ui/Z.png" type="Texture" id=4]
 
 [sub_resource type="Gradient" id=1]
 offsets = PoolRealArray( 0, 0.280788, 0.608374, 1 )
@@ -30,42 +29,24 @@ color_ramp = SubResource( 2 )
 size = 35
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "hooray"
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:process_material:initial_velocity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 10.0, 200.0, 10.0 ]
-}
-
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=5]
 offsets = PoolRealArray( 0.0185185, 0.192593, 0.392593, 0.566667, 0.714815, 0.892593, 1 )
 colors = PoolColorArray( 1, 0.607053, 0.607053, 1, 0.996812, 1, 0.59194, 1, 0.595537, 0.882812, 0.535914, 1, 0.554707, 0.90625, 0.865054, 1, 0.327299, 0.349761, 0.902344, 1, 0.874641, 0.379133, 0.890625, 1, 0.914062, 0.338456, 0.432892, 1 )
 
-[sub_resource type="GradientTexture" id=7]
-gradient = SubResource( 6 )
+[sub_resource type="GradientTexture" id=6]
+gradient = SubResource( 5 )
 
-[sub_resource type="ParticlesMaterial" id=8]
+[sub_resource type="ParticlesMaterial" id=7]
 flag_disable_z = true
-gravity = Vector3( -98, -98, 0 )
-initial_velocity = 194.922
-angular_velocity = 0.0
+gravity = Vector3( -98, 98, 0 )
+initial_velocity = 153.604
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 6.74
 scale_random = 0.32
-color_ramp = SubResource( 7 )
+color_ramp = SubResource( 6 )
 
-[sub_resource type="Animation" id=9]
-resource_name = "hooray"
+[sub_resource type="Animation" id=8]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:process_material:initial_velocity")
@@ -80,8 +61,39 @@ tracks/0/keys = {
 "values": [ 10.0, 200.0, 10.0 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "Credits"
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0.0185185, 0.192593, 0.392593, 0.566667, 0.714815, 0.892593, 1 )
+colors = PoolColorArray( 1, 0.607053, 0.607053, 1, 0.996812, 1, 0.59194, 1, 0.595537, 0.882812, 0.535914, 1, 0.554707, 0.90625, 0.865054, 1, 0.327299, 0.349761, 0.902344, 1, 0.874641, 0.379133, 0.890625, 1, 0.914062, 0.338456, 0.432892, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_disable_z = true
+gravity = Vector3( -98, -98, 0 )
+initial_velocity = 194.922
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 6.74
+scale_random = 0.32
+color_ramp = SubResource( 10 )
+
+[sub_resource type="Animation" id=12]
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:process_material:initial_velocity")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 10.0, 200.0, 10.0 ]
+}
+
+[sub_resource type="Animation" id=13]
 length = 25.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Stars:rotation_degrees")
@@ -192,12 +204,11 @@ tracks/8/keys = {
 "values": [ Vector2( 8, 530.618 ), Vector2( 8, 530.618 ), Vector2( 8, -1617.77 ) ]
 }
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=14]
 size = 42
 font_data = ExtResource( 3 )
 
-[sub_resource type="Animation" id=12]
-resource_name = "press_z"
+[sub_resource type="Animation" id=15]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -236,34 +247,32 @@ align = 1
 valign = 1
 
 [node name="Particles2D" type="Particles2D" parent="."]
-visible = false
 position = Vector2( 0, 168 )
 rotation = -1.13446
 amount = 40
-process_material = ExtResource( 4 )
+process_material = SubResource( 7 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Particles2D"]
-anims/hooray = SubResource( 5 )
+anims/hooray = SubResource( 8 )
 
 [node name="Particles2D2" type="Particles2D" parent="."]
-visible = false
 position = Vector2( 513.188, 170.791 )
 rotation = -2.79106
 amount = 40
-process_material = SubResource( 8 )
+process_material = SubResource( 11 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="Particles2D2"]
-anims/hooray = SubResource( 9 )
+anims/hooray = SubResource( 12 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Credits = SubResource( 10 )
+anims/Credits = SubResource( 13 )
 
 [node name="Credits" type="Label" parent="."]
 margin_left = 8.0
 margin_top = 530.618
 margin_right = 500.0
 margin_bottom = 2447.62
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 text = "Made by AloveZ
 
 
@@ -309,7 +318,7 @@ autowrap = true
 [node name="Z" type="Sprite" parent="."]
 position = Vector2( 478.545, 480.12 )
 scale = Vector2( 0.263778, 0.263778 )
-texture = ExtResource( 5 )
+texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Z"]
-anims/press_z = SubResource( 12 )
+anims/press_z = SubResource( 15 )

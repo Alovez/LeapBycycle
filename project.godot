@@ -49,5 +49,5 @@ boost={
 [rendering]
 
 quality/2d/use_pixel_snap=true
+threads/thread_model=0
 environment/default_clear_color=Color( 0.403922, 0.403922, 0.403922, 1 )
-environment/default_environment="res://default_env.tres"

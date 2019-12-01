@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/低速.wav-316c1f4c41a44e4cc41cef8c1aa4d8fa.sample"
+
+[deps]
+
+source_file="res://Music/低速.wav"
+dest_files=[ "res://.import/低速.wav-316c1f4c41a44e4cc41cef8c1aa4d8fa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

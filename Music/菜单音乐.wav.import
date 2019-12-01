@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/菜单音乐.wav-cbeb1db1ddc80e8c917e0f7d39d6fd9e.sample"
+
+[deps]
+
+source_file="res://Music/菜单音乐.wav"
+dest_files=[ "res://.import/菜单音乐.wav-cbeb1db1ddc80e8c917e0f7d39d6fd9e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

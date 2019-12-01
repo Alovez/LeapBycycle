@@ -42,6 +42,7 @@ func _physics_process(delta):
 		elif Input.is_action_pressed("ui_right"):
 			position.x += 2
 		position.y -= velocity * delta * kv
+		update_bg()
 	
 		
 func update_force():
@@ -100,6 +101,14 @@ func update_energy(f):
 	if not (energy <= 0 and Input.is_action_pressed('ui_up')) and energy < 100:
 		energy += energy_recovery
 
+func update_bg():
+	if velocity > 0.8 and velocity < 2 and not $low_speed.playing:
+		$high_speed.stop()
+		$low_speed.play()
+	
+	if velocity >= 2 and not $high_speed.playing:
+		$low_speed.stop()
+		$high_speed.play()
 
 func _on_Area2D_body_entered(body):
 	if body != $RigidBody2D:
