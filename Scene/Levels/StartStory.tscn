@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/StartStory.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Effects/Stars.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Pic/ui/leapyear.png" type="Texture" id=10]
 [ext_resource path="res://Pic/ui/Z.png" type="Texture" id=11]
 [ext_resource path="res://Pic/ui/Right.png" type="Texture" id=12]
+[ext_resource path="res://Music/菜单音乐.wav" type="AudioStream" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -430,3 +431,6 @@ anims/stop = SubResource( 6 )
 position = Vector2( 496.177, 496.78 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 12 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 13 )

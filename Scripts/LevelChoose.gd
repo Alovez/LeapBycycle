@@ -8,6 +8,7 @@ func _ready():
 	$Z/Z_blink.play("z_blink")
 	get_high_score()
 	waiting_input("0")
+	$AudioStreamPlayer2D.play()
 
 func _process(delta):
 	if Input.is_action_pressed("ui_right"):

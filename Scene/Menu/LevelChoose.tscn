@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/LevelChoose.gd" type="Script" id=1]
 [ext_resource path="res://Scene/Menu/MenuBackgroud.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Font/New Super Mario Font U.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://Pic/ui/Left.png" type="Texture" id=13]
 [ext_resource path="res://Pic/ui/Right.png" type="Texture" id=14]
+[ext_resource path="res://Music/菜单音乐.wav" type="AudioStream" id=15]
 
 [sub_resource type="Animation" id=1]
 resource_name = "z_blink"
@@ -216,4 +217,7 @@ custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_hover = Color( 1, 0.72549, 0.72549, 1 )
 custom_colors/font_color_pressed = Color( 1, 0.545098, 0.545098, 1 )
 text = "Back"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 15 )
 [connection signal="button_up" from="BackToMenu" to="." method="_on_BackToMenu_button_up"]
